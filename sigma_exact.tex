@@ -1,0 +1,13 @@
+\documentclass[border=10pt, tikz]{standalone}
+\usepackage{tikz-cd}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+
+\begin{document}
+\begin{tikzcd}[column sep=large]
+    0\arrow[hookrightarrow]{r}{i'} & V_E W \arrow[hookrightarrow]{r}{i} & 
+    V_M W \arrow{r}{\textrm{T} \pi_{E,W}}\arrow[hookrightarrow]{d}{} & 
+    \pi^\ast_{E,W} \left(V_E M \right)\arrow{r}{\textrm{T} \pi_{M,E}}\arrow[hookrightarrow]{d} & 0 \\
+    & & TW \arrow[bend left=33]{ul}{\sigma} & \pi^\ast (TE) \arrow{l}{u} &
+\end{tikzcd}
+\end{document}
