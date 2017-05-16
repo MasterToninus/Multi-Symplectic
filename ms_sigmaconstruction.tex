@@ -24,19 +24,22 @@
            shorten >=1pt,},                            
   % Specifications for style of nodes:
    base/.style = {rectangle, rounded corners, draw=black,
-                  minimum width=2cm, minimum height=1cm,
+                  minimum width=2.5cm, minimum height=1cm,
+                  text centered, font=\sffamily},
+   manifold/.style = {rectangle, rounded corners, draw=black,
+                  minimum width=2.5cm, minimum height=2.5cm,
                   text centered, font=\sffamily},
    tangent/.style = {circle, rounded corners, draw=black,
                   minimum width=3cm, minimum height=1cm,
                   text centered, font=\sffamily},
       tangent/.style = {circle, rounded corners, draw=black,
-                  minimum width=2cm, minimum height=1cm,
+                  minimum width=3cm, minimum height=1cm,
                   text centered, font=\sffamily},               
    verticalsmall/.style = {rectangle, rounded corners, draw=black,
-                  minimum width=2cm, minimum height=1cm,
+                  minimum width=1cm, minimum height=1cm,
                   text centered, font=\sffamily},
    verticalbig/.style = {rectangle, rounded corners, draw=black,
-                  minimum width=1cm, minimum height=1cm,
+                  minimum width=1.75cm, minimum height=1.75cm,
                   text centered, font=\sffamily},                              
    hamiltonian/.style = {base, fill=blue!20},
    lagrangian/.style = {base, fill=red!20},
@@ -49,19 +52,22 @@
 % Drawing part, node distance is 1.5 cm and every node
 % is prefilled with white background
 
-\begin{tikzpicture}[node distance=2.25cm,
+\begin{tikzpicture}[node distance=3.25cm,
     every node/.style={fill=white, font=\sffamily}, align=center]
 
   % Specification of nodes (position, etc.)
   \node (M_block)	[base]	{M};
-  \node (E_block)	[base, above of= M_block]	{E};
-  \node (W_block)	[base, above of= E_block]	{$W$};
-  \node (TE_block)	[tangent, right of= E_block, , xshift=0.4cm]	{$TE$};
-  \node (VE_block)	[process, right of= E_block, , xshift=0.4cm]	{$VE$};
+  \node (E_block)	[manifold, above of= M_block]	{E};
+  \node (W_block)	[manifold, above of= E_block]	{$W$};
+  \node (TE_block)	[tangent, right of= E_block, , xshift=0.4cm , label={[label distance=-0.775cm]90:$TE$}]	{};
+  \node (VE_block)	[verticalbig, right of= E_block,xshift=0.4cm, yshift=-0.40cm, label={[label distance=-0.7cm]90:$VE$}]	{};
 
-  \node (TW_block)	[tangent, right of= W_block, , xshift=0.4cm]	{$TW$};
-  \node (VmW_block)	[verticalbig, right of= W_block, , xshift=0.4cm]	{$V_MW$};
-  \node (VeW_block)	[verticalsmall, right of= W_block, , xshift=0.4cm]	{$V_EW$};
+  \node (TW_block)	[tangent, right of= W_block, , xshift=0.4cm , label={[label distance=-0.775cm]90:$TW$}]	{};
+  \node (VmW_block)	[verticalbig, right of= W_block, , xshift=0.4cm, yshift=-0.40cm, label={[label distance=-0.7cm]90:$V_M W$}]	{};
+  \node (VeW_block)	[verticalsmall, right of= W_block, ,  xshift=0.4cm, yshift=-0.75cm]	{$V_EW$};
+
+  \node (pbTW_block) [ tangent, above right of= TW_block, xshift=0.4cm , label={[label distance=-0.775cm]90:$\pi_{E,W}^\ast\left( TE\right)$}]	{};
+  \node (pbVmW_block)	[verticalbig, above right of= TW_block , xshift=0.4cm, yshift=-0.40cm]	{$\pi_{E,W}^\ast\left( TV\right)$};
 
   \end{tikzpicture}
   
