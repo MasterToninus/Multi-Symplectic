@@ -12,7 +12,7 @@
 
 \usepackage{amsmath}
 \usepackage[multisym, geomec,basic]{../Math-Symbols-List/commonmathsymb}
-\usepackage{standalone}
+\usepackage[subpreambles=true]{standalone}
 \usepackage{graphicx}
 \usepackage{wrapfig}
 
@@ -215,7 +215,7 @@ Precisely this can be encoded in the following operator:
 
 \begin{wrapfigure}{L}{0.41\textwidth}
 \centering
-\includegraphics[width=0.40\textwidth]{Pictures/jacobi.png}
+\includegraphics[width=0.40\textwidth]{Pictures/Jacobi.png}
 \caption{\footnotesize \label{fig:jacobi}$J[\phi]$ and $D$ target on the same space.}
 \end{wrapfigure}
 where:
@@ -243,7 +243,7 @@ The operator is well defined since
 	\phi \in \Sol \quad \Rightarrow \quad D[\phi] \subset 0(E)
 \end{displaymath}
 
-\section{Construction of $\sigma$}
+\subsection{Construction of $\sigma$}
 Consider the two stacked bundle, $ W \rightarrow E$ vector bundle, $E \rightarrow M$ smooth bundle.
 
 where $m$ is the standard bundle morphism of pull-back bundle:
@@ -259,7 +259,7 @@ where $m$ is the standard bundle morphism of pull-back bundle:
 We have the following short exact sequence of bundle morphism over $W$
 \begin{figure}
   \centering
-  \caption{short exact sequence}
+  \includestandalone[mode=buildnew]{sigma_exact}
 \end{figure}
 because
 
@@ -284,6 +284,81 @@ The claimed right splitting is the following:
 		u = T0 \circ m \; : & \; \pi^\ast_{E,W} \left(TE \right) \rightarrow TE \rightarrow TW \\
 						& \{w\} \times \{V_{\pi(w)} \} \mapsto V_{\pi(w)} \mapsto \left( T_{\pi(w)}0\right) (V_{\pi(w)})
 \end{align*}
+In fact, since $0 \in \Gamma (W,E)$:
+
+\begin{displaymath}
+	\textrm{T}_e 0 \circ \textrm{T}_\omega \pi_{E,W} V =
+	\textrm{T}_\omega \left( 0 \circ \pi_{E,W} \right) V = 
+	V \qquad \forall V \in \left( V_M W \right)_\omega ,\; \omega \in \pi^-1(e)
+\end{displaymath}
+Therefore, we have the following decomposition:
+
+\begin{displaymath}
+	\left( V_M W \right)_{0(e)} = 
+	i\left[ V_E W \right]_{0(e)} \oplus \left( T_e 0 \left[ V_e E\right] \right)
+\end{displaymath}
+determining an intrinsic mapping 
+\begin{displaymath}
+	\sigma_e : \left( V_M W \right)_{0(e)} \rightarrow \left( V_E W \right)_{0(e)} \simeq W_e
+\end{displaymath}
+
+which is simply a  projection on the first component.
+
+Since we have such projection for all $e \in E$ and it acts fiberwise, it can be regarded as a bundle morphism over $E$:
+\begin{displaymath}
+	\sigma : 0^\ast \left( V_M W \right) \rightarrow 0^\ast \left( V_E W \right) \simeq W
+\end{displaymath} 
+
+\begin{wrapfigure}{L}{0.41\textwidth}
+\centering
+\includegraphics[width=0.40\textwidth]{Pictures/sigma.png}
+  %\caption{.}
+\end{wrapfigure}
+Visually this is a map which "verticalize" w.r.t. $E$ the vertical vectors w.r.t. $M$ along $0(E) \subset W$
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.41\textwidth]{Pictures/fieldJacobi.png}
+  \caption{.}
+\end{figure}
+
+
+
+\newpage
+\section{Covariant approach: pre-symplectic form}
+\begin{wrapfigure}{L}{0.41\textwidth}
+\centering
+\includegraphics[width=0.40\textwidth]{Pictures/symform.png}
+  \caption{(temp)}
+\end{wrapfigure}
+
+Rough strategy:
+\begin{itemize}
+	\item Find a way to contract $\delta \phi$ and $\delta \phi '$ , seen as tangent vector field on $E$, with the multi-symplectic forms $\omega$.
+	\item pull-back the obtained $m-1$ form to $M$, oriented manifold.
+	\item Integrate thus form on a suitable $(m-1)$ dimensional sub-manifold of $M$.
+	\item take the resulting number as the evaluation of the desired form on the two variations.  
+\end{itemize}
+
+Rigourosly, we define $\forall \phi \in \Conf$, $\forall \Sigma \subset M$ $m-1$ dimensional, compact submanifold
+
+\begin{definition}[(covariant) pre-symplectic form in $\phi$ pertaining to $\Sigma$]
+	\begin{displaymath}
+		\Omega_\Gamma ( \phi ) : \textrm{T}_\phi \Conf \times \textrm{T}_\phi \Conf \rightarrow \Real
+\end{displaymath}		
+	S.t:
+	\begin{align*}
+		\left\langle	\Omega_\Sigma ( \varphi) \right.\left\lvert \delta \varphi_1 , \delta \varphi_2 \right\rangle &=		
+		\int_\Gamma (j^1 \varphi)^\ast \left[ i_{\delta\varphi_2} i_{\delta \varphi_1} \omega_\Lagrangian \right]
+		& \qquad \textrm{(Lagrangian framework)} \\
+		\left\langle	\Omega_\Sigma ( \varphi, \pi) \right.\left\lvert ( \delta \varphi_1, \delta \pi_1),
+		( \delta \varphi_2, \delta \pi_2) \right\rangle &=		
+		\int_\Gamma (\varphi, \pi)^\ast \left[ i_{( \delta \varphi_2, \delta \pi_2)} i_{( \delta \varphi_1, \delta \pi_1)} \omega_\Hamiltonian \right]
+		& \qquad \textrm{(Hamiltonian framework)} 		
+	\end{align*}
+\end{definition}
+
+We can easily recognize that at this level $J^1 E$ and $\LinDualJet$ takes a similar role
 
 
 
@@ -295,29 +370,10 @@ Finally, Section~\ref{conclusions} gives the conclusions.
 
 
 
-\begin{figure}
-  \centering
-  \includegraphics{Pictures/jacobi.png}
-  \caption{.}
-\end{figure}
 
-\begin{figure}
-  \centering
-  \includegraphics{Pictures/jacobi.png}
-  \caption{.}
-\end{figure}
 
-\begin{figure}
-  \centering
-  \includegraphics{Pictures/fieldJacobi.png}
-  \caption{.}
-\end{figure}
 
-\begin{figure}
-  \centering
-  \includegraphics{Pictures/sigma.png}
-  \caption{.}
-\end{figure}
+
 
 
 
