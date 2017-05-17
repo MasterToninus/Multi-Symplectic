@@ -52,7 +52,7 @@
 % Drawing part, node distance is 1.5 cm and every node
 % is prefilled with white background
 
-\begin{tikzpicture}[node distance=3.25cm,
+\begin{tikzpicture}[node distance=4cm,
     every node/.style={fill=white, font=\sffamily}, align=center]
 
   % Specification of nodes (position, etc.)
@@ -66,21 +66,22 @@
   \node (VmW_block)	[verticalbig, right of= W_block, , xshift=0.4cm, yshift=-0.40cm, label={[label distance=-0.7cm]90:$V_M W$}]	{};
   \node (VeW_block)	[verticalsmall, right of= W_block, ,  xshift=0.4cm, yshift=-0.75cm]	{$V_EW$};
 
-  \node (pbTW_block) [ tangent, above right of= TW_block, xshift=0.4cm , label={[label distance=-0.775cm]90:$\pi_{E,W}^\ast\left( TE\right)$}]	{};
-  \node (pbVmW_block)	[verticalbig, above right of= TW_block , xshift=0.4cm, yshift=-0.40cm]	{$\pi_{E,W}^\ast\left( TV\right)$};
+  \node (pbTW_block) [ tangent, above right of= TW_block, xshift=0.4cm , label={[label distance=-0.9cm]90:$\pi_{E,W}^\ast\left( TE\right)$}]	{};
+  \node (pbVmW_block)	[verticalbig, above right of= TW_block , xshift=0.4cm, yshift=-0.35cm]	{$\pi_{E,W}^\ast\left( TV\right)$};
+
+
+  % Bundle Projections 
+	\draw[projection]	(E_block) -- (M_block);
+	\draw[projection]	([xshift=-0.5cm]W_block.south) -- node {$\pi$} ([xshift=-0.5cm]E_block.north);
+	\draw[projection]	(TE_block) -- (E_block);
+	\draw[projection]	(TW_block) -- (W_block);
+	\draw[projection]	(pbTW_block.west) -- (W_block.north);
+	
+	\draw[lagmap]	(pbTW_block.south) -- node {$m$}	(TE_block.east);   
+	\draw[projection]	([xshift=-0.5cm]TW_block.south) -- node {$T \pi$}	([xshift=-0.5cm]TE_block.north); 
+	\draw[lagmap]	([xshift=+0.5cm] E_block.north) -- node {$0$}	([xshift=+0.5cm] W_block.south);    
+	\draw[lagmap]	([xshift=+0.5cm] TE_block.north) -- node {$T 0$}	([xshift=+0.5cm] TW_block.south);   	
+	\draw[lagmap]	(pbTW_block) -- node {$T \pi$}	(TW_block);   
 
   \end{tikzpicture}
-  
-  
-  \begin{tikzpicture}
-    \node[matrix] (A) {
-        \draw (0,0) rectangle (1,1); 
-        \node at (0.5,0.5) {A}; \\
-    };
-    \node[matrix,left of=A] (B) 
-    {
-        \draw (0.5,0.5) circle (0.5);
-        \fill (0.5,0.5) circle (0.1); \\
-    };
-\end{tikzpicture}
 \end{document}
