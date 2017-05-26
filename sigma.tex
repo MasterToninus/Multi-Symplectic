@@ -1,0 +1,132 @@
+\documentclass[border=10pt, tikz]{standalone}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usepackage[multisym, geomec, basic, diffgeo]{./Math-Symbols-List/toninus-math-symbols}
+\usetikzlibrary{patterns,hobby}
+
+\tdplotsetmaincoords{110}{50}
+
+\tikzset{%
+  % Specifications for style of arrows:
+   M/.style={
+           -,
+           red,},
+   F/.style={
+           -,
+           blue,},
+   W/.style={
+           -,
+           green,},
+   O/.style={
+           -,
+           gray,},
+   hidden/.style={
+   			dashed,},                            
+}
+
+\def \zlevel {1.25}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2, tdplot_main_coords,thick]
+
+\node (O) at (0,0,0)  {};
+\node (A) at (0,3,0)  {};
+\node (B) at (3,3,0)  {};
+\node (C) at (3,0,0)  {};
+
+\draw[M] (O.center) -- node [below] {$M$} (A.center); 
+
+\draw[F] (A.center) --  node [below right] {$F$} (B.center);
+\draw[F,hidden] (B.center) --  node [right] {} (C.center); 
+\draw[F,hidden] (C.center) --  node [right] {} (O.center);  
+\path[fill=blue!5,opacity=.5] (O.center) to (A.center) to (B.center) to (C.center) to (O.center);
+
+
+
+\node (O1) at (0,0,\zlevel)  {};
+\node (A1) at (0,3,\zlevel)  {};
+\node (B1) at (3,3,\zlevel)  {};
+\node (C1) at (3,0,\zlevel)  {};
+
+\draw[O] (O1.center) -- node [below] {$0(F)$} (A1.center); 
+\draw[O] (A1.center) --  node [right] {} (B1.center);
+\draw[O,hidden] (B1.center) --  node [right] {} (C1.center); 
+\draw[O,hidden] (C1.center) --  node [right] {} (O1.center); 
+
+\node (O2) at (0,0,3)  {};
+\node (A2) at (0,3,3)  {};
+\node (B2) at (3,3,3)  {};
+\node (C2) at (3,0,3)  {};
+
+\draw[W] (O2.center) -- node [below] {} (A2.center); 
+\draw[W] (A2.center) --  node [right] {} (B2.center);
+\draw[W] (B2.center) --  node [right] {} (C2.center); 
+\draw[W] (C2.center) --  node [above] {$V^\TwistedLinear F $} (O2.center); 
+
+\draw[W] (O.center) -- node [below] {} (O2.center); 
+%\draw[W] (A.center) -- node [below] {} (A2.center); 
+\draw[W] (B.center) -- node [below] {} (B2.center); 
+\draw[W,hidden] (C.center) -- node [below] {} (C2.center); 
+
+\path[fill=green!5,opacity=.25] (O.center) to (C.center) to (C2.center) to (O2.center) to (O.center);
+\path[fill=green!5,opacity=.25] (C.center) to (B.center) to (B2.center) to (C2.center) to (C.center);
+\path[fill=green!5,opacity=.25] (O2.center) to (A2.center) to (B2.center) to (C2.center) to (O2.center);
+\path[fill=gray!10,opacity=.25] (O1.center) to (A1.center) to (B1.center) to (C1.center) to (O1.center);
+
+%\node[draw=none,shape=circle,fill, inner sep=2pt] (d1) at (0,1,0){};  % circle
+
+\node (P0) at (0.5,0,\zlevel) {};
+\node (P1) at (1.2,3,\zlevel) {};
+\node (P2) at (2.5,3,\zlevel)  {};
+
+
+
+    	%Curva di Partenza
+    \draw[red,line width=1pt] (P0.center)
+    .. controls (1.5,0.75,\zlevel)  and (2.5,0.5,\zlevel) .. (1.5,1.5,\zlevel)
+		\foreach \p in {0,2,...,10}{						%punti per ottenere il vettore variazione
+      		node[sloped,inner sep=0cm,above,pos=\p/10,
+      			anchor=south west]
+      			(Na \p){}
+  		}
+  	.. controls  (0.5,2.5,\zlevel) .. (P1.center)
+		\foreach \p in {0,2,...,10}{						%punti per ottenere il vettore variazione
+      		node[sloped,inner sep=0cm,above,pos=\p/10,
+      			anchor=south west]
+      			(Ma \p){}
+  		}
+  		;
+ 	
+  	%Curva Variata
+    \draw[purple,line width=0.5pt,dotted] (P0)+(0.25,0,0)
+    .. controls (1.95,0.75,\zlevel)  and (2.8,0.5,\zlevel) .. (2.35,1.5,\zlevel)
+		\foreach \p in {0,2,...,10}{						%punti per ottenere il vettore variazione
+      		node[pos=\p/10]
+      			(Nb \p){}
+  		}
+  	.. controls  (1.5,2.5,\zlevel) .. (P2.center)
+		\foreach \p in {0,2,...,10}{						%punti per ottenere il vettore variazione
+      		node[pos=\p/10]
+      			(Mb \p){}
+  		}
+  		;
+   	%Lo Jacobi Field
+    \foreach \p in {0,2,...,10} {
+      \draw[->,orange,line width=0.65pt] (Na \p.center) -- (Nb \p.center);
+      \draw[->,orange,line width=0.65pt] (Ma \p.center) -- (Mb \p.center);    }
+      
+      
+      \node (p) at (1.2,3,\zlevel) [below right,red] {$D[\phi]$};
+	  \node (q) at (2.5,3,\zlevel)  [below right,purple] {$D[\phi_\lambda]$};
+	  \node (r) at (Mb 0)  [above,orange] {$\delta D[\phi]$};
+
+\draw[W] (A.center) -- node [below] {} (A2.center); 
+\path[fill=green!5,opacity=.25] (B.center) to (A.center) to (A2.center) to (A2.center) to (B.center);
+\path[fill=green!5,opacity=.25] (A.center) to (O.center) to (O2.center) to (O2.center) to (A.center);
+
+ 
+    \end{tikzpicture}
+    \end{document}
+    
+    

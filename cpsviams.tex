@@ -16,7 +16,7 @@
 \usepackage{commath}
 
 \usepackage{graphicx}
-\usepackage{wrapfig}
+\usepackage{hyperref}
 
 \usepackage{Latex-Theorem/theoremtemplate}
 
@@ -28,13 +28,8 @@
 \maketitle
 
 \begin{abstract}
-In questo talk viene dettagliata la costruzione del covariant phase space partendo dal formalismo multisimplettico come descritto nell'artticolo di forger romero.
-
-La costruzione del covariant phase space con la cognizione del formalismo simplettico come descritta nell'articolo di forger romero.
-
-Piccola rivisisazione sulla dimostrazione della corrente simplettica (indipendentemente dal formalismo adottato)
-
-Con lo stesso linguaggio si può descrivere più precisamente l'algoritmo di Peierls partendo dalle variazione di soluzioni sottomesse ad una variazione di lagrangiana.
+In this talk we detail the construction of the covariant phase space starting from multisymplectic framework of geometric classic field theories following essentially the paper written by forger romero. 
+%Con lo stesso linguaggio si può descrivere più precisamente l'algoritmo di Peierls partendo dalle variazione di soluzioni sottomesse ad una variazione di lagrangiana.
 
 \end{abstract}
 
@@ -189,7 +184,7 @@ Again, we would like to employ a collective notation to denote the motion equati
 	D[\; ] = \; \Gamma^\infty(F) \ni \phi \quad \mapsto \quad D[ \phi ] \in \Gamma^\infty \left( \phi^\ast \left(V^\TwistedLinear F \right)\right)
 \end{displaymath}	
 in other words, $D[\phi](x) \in V^\TwistedLinear_{\phi(x)}F$ is a twisted linear one-form.
-//
+\\
 	The evaluation of operator $D$, when applied to $\phi$, on a test vector field $V \in \Gamma(\phi^\ast(VF))$, results:
 	\begin{displaymath}
 		\left\langle D[\phi] \right\vert \left. V \right\rangle =
@@ -215,8 +210,7 @@ in other words, $D[\phi](x) \in V^\TwistedLinear_{\phi(x)}F$ is a twisted linear
 	\end{center}	
 	
 	
-	Noticing the recurring scheme we will also denote $
-		W = V^\TwistedLinear F $
+	Noticing the recurring scheme we will also denote $	W = V^\TwistedLinear F $
 \end{notation}
 
 The remarkable feature of the $\Sol$ space is that it carries a naturally defined pre-symplectic form $\Omega$. Natural beside the fact that its very structure, as a set, is expicitly determined by the fixed Lagrangian or Hamiltonian.\\
@@ -471,15 +465,15 @@ Since we have such projection for all $e \in E$ and it acts fiberwise, it can be
 
 \begin{figure}
 \centering
-\includegraphics[width=0.40\textwidth]{Pictures/sigma.png}
+  \includestandalone[mode=buildnew]{sigma}
   %\caption{.}
 \end{figure}
 Visually this is a map which "verticalize" w.r.t. $E$ the vertical vectors w.r.t. $M$ along $0(E) \subset W$
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.41\textwidth]{Pictures/fieldJacobi.png}
-  \caption{.}
+    \includestandalone[mode=buildnew]{fieldJacobi}
+  %\caption{.}
 \end{figure}
 
 
