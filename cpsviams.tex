@@ -7,7 +7,7 @@
 }
 \date{\today}
 
-\documentclass[a4paper,12pt]{scrartcl}  %Per La Stampa
+\documentclass[a4paper,12pt,fleqn]{scrartcl}  %Per La Stampa
 \usepackage[a4paper, margin=2cm]{geometry}
 
 \usepackage{amsmath}
@@ -28,6 +28,8 @@
 \maketitle
 
 \begin{abstract}
+In questo talk viene dettagliata la costruzione del covariant phase space partendo dal formalismo multisimplettico come descritto nell'artticolo di forger romero.
+
 La costruzione del covariant phase space con la cognizione del formalismo simplettico come descritta nell'articolo di forger romero.
 
 Piccola rivisisazione sulla dimostrazione della corrente simplettica (indipendentemente dal formalismo adottato)
@@ -121,7 +123,7 @@ Let's briefly recall in what consists the multisymplectic approach to mechanics 
 
 \end{itemize}
 
-
+\clearpage \newpage
 \section{Covariant phase space approach}
 The gist of the transition from the \emph{multi-symplectic approach} to the \emph{Covariant Functional Approach} - based on the \emph{Covariant Phase Space} - is basically to perform a change of perspective.\\
 We have to move our attention from the bundles to the cross-sections on the bundles.
@@ -152,13 +154,20 @@ In this approach there are two central objects:
 			\Conf \coloneqq \Gamma^\infty(F,M)
 		\end{displaymath}
 	\end{definition}
-	
+%
+	\begin{remark}
+		Since the jet functor $j^1$ acts injectively on sections, we can equivalently consider any other holonomic jet sections
+		\begin{displaymath}
+			\Conf \simeq j^k \Gamma^\infty(F)
+		\end{displaymath}
+	\end{remark}	
+%
 	\begin{definition}[Space of Dynamics (on-shell) configurations]\label{Def:SolSpace}
 		Is the subset of $\Conf$:
 		\begin{displaymath}
 			\Sol \coloneqq \ker(D_\cdot) \subset \Conf
 		\end{displaymath}
-		containing all the smooth solutions of the motion equations corresponding to the  dynamical operator $D_\cdot$.
+		containing all the smooth solutions of the motion equations corresponding to the  dynamical operator $D_\Lagrangian$ or $D_\Hamiltonian$ depending on the framework considered.
 	\end{definition}
 
 The key point of the latter definition is that the \emph{Euler-Lagrange} map and the \emph{DeDonder-Weyl} map, being bundle-morphism, can be regarded as mapping from $\Conf$ to the section of a suitable vector bundle composing with the jet functor $j$.
@@ -175,16 +184,19 @@ The target base is a vector space, more precisely a frechet space \cite[Cap.2]{B
 
 Again, we would like to employ a collective notation to denote the motion equation operators $D_\Lagrangian$ and $D_\Hamiltonian$:
 \begin{notation}
-	
-	Since operators $D$ when applied to $\phi \in \Conf$ yields a twisted 1-form, 
-	we denote them collectively as $D[\phi] \in \Gamma(\phi^\ast(V^\TwistedLinear F))$.
-	When $D$ is evaluated on a vector field yields
+	Since $D_\Lagrangian$ and $D_\Hamiltonian$ depend on different order jet bundle over $F$, can not be introduced directly a common notation on the multi-symplectic ground but we have to pass to the functional framework:
+\begin{displaymath}
+	D[\; ] = \; \Gamma^\infty(F) \ni \phi \quad \mapsto \quad D[ \phi ] \in \Gamma^\infty \left( \phi^\ast \left(V^\TwistedLinear F \right)\right)
+\end{displaymath}	
+in other words, $D[\phi](x) \in V^\TwistedLinear_{\phi(x)}F$ is a twisted linear one-form.
+//
+	The evaluation of operator $D$, when applied to $\phi$, on a test vector field $V \in \Gamma(\phi^\ast(VF))$, results:
 	\begin{displaymath}
 		\left\langle D[\phi] \right\vert \left. V \right\rangle =
-		\phi^\ast \left( V \lrcorner \omega \right) 
+		\phi^\ast \left( i_V \omega \right) 
 		\begin{cases}
-			(j^1 \varphi)^\ast \left( j^1V \lrcorner \omega_\Lagrangian \right) \\
-			(\varphi, \pi)^\ast \left( V \lrcorner \omega_\Hamiltonian \right)
+			(j^1 \varphi)^\ast \left( i_{j^1V} \: \omega_\Lagrangian \right) \\
+			(\varphi, \pi)^\ast \left( i_V \: \omega_\Hamiltonian \right)
 		\end{cases}              
         \in \Omega^m(M)
 	\end{displaymath}
@@ -195,7 +207,7 @@ Again, we would like to employ a collective notation to denote the motion equati
 			\hline
 			 & Lagrangian picture & Hamiltonian picture \\
 			\hline
-			$\phi \in \Conf$		&	$j^1 \varphi$		&	$(\varphi, \pi)$	\\
+			$\phi \in \Conf$		&	$j^1 \varphi \; , \quad \varphi \in \Gamma^\infty(E)$		&	$(\varphi, \pi)$	\\
 			$V \in \Gamma(\phi^\ast V F )$ & $j^1 V$ & $V$ \\
 			$\omega$ & $\omega_\Lagrangian$ & $\omega_\Hamiltonian$ \\
 			\hline
@@ -203,14 +215,8 @@ Again, we would like to employ a collective notation to denote the motion equati
 	\end{center}	
 	
 	
-	Noticing the recurring scheme we will make use of the following notation:
-	\begin{displaymath}
-		W = V^\TwistedLinear F \; ; \; V = \Gamma^\infty(\phi^\ast W)
-	\end{displaymath}
-	So,
-	\begin{displaymath}
-		D[\phi] \in V \quad \forall \phi \in \Conf
-	\end{displaymath}
+	Noticing the recurring scheme we will also denote $
+		W = V^\TwistedLinear F $
 \end{notation}
 
 The remarkable feature of the $\Sol$ space is that it carries a naturally defined pre-symplectic form $\Omega$. Natural beside the fact that its very structure, as a set, is expicitly determined by the fixed Lagrangian or Hamiltonian.\\
@@ -255,27 +261,43 @@ Rigourosly, this can be expressed in the following definition:
 	\end{definition}
 In other words, it consists of the solutions of the Jacobi equations.
 
+
+\clearpage \newpage
 \section{Jacobi Operator}\label{Sec:JacobiOperator}
 Intuitively, the Jacobi equation are the formal linearizazion of the motion equation around a solution $\phi$.\\
 Precisely this can be encoded in the following operator:
 
-	\begin{definition}[Jacobi operator pertaining to $D_\cdot$ around a solution $\phi \in \Sol$]\label{Def:JacobiOp}
+	\begin{definition}[Jacobi operator pertaining to $D$ around a solution $\phi \in \Sol$]\label{Def:JacobiOp} is the bundle map over $F$:
 		\begin{displaymath}
-			J(\phi) \; : \; T_\phi \Conf \rightarrow	\phi^\ast(V^\TwistedLinear F) 
-			\quad s.t. \quad  \left(J(\phi)\right) [ \delta\phi ]
-			= \sigma \left( \left.\dfrac{\diff}{\diff \lambda} D_\cdot [\phi_\lambda]\right\rvert_{\lambda=0} \right)
+			J(\phi) \; : \; \phi^\ast(VF) \rightarrow	\phi^\ast(V^\TwistedLinear F) 
+			\quad s.t. \quad  \left(J(\phi)\right) V
+			= \sigma \left( \left.\dfrac{\diff}{\diff \lambda} D [\phi_\lambda](x) \right\rvert_{\lambda=0} \right)
 		\end{displaymath}
+		where $V\in (\phi^\ast(VF))_{\phi(x)} = V_{\phi(x)}F$ and $\phi_\lambda$ is a regular variation generated by a $\delta\phi$ such that $\delta\phi_x = V$ and
+		$\sigma$ is the canonical bundle-morphism
+		\begin{displaymath}
+			\sigma:  0^\ast \left( V_M W \right)  \; \rightarrow \;  0^\ast \left(V_E W \right) \simeq W
+		\end{displaymath}
+		 where $V_M W$ and $V_F W$ are the vertical sub-bundle of $T W$ w.r.t. $M$ and $F$ respectively 
+		 and $0$ is the zero-section of $W$ over $F$.
 	\end{definition}
-
+	As a bundle-map, $J$ can be naturally interpreted functionally as
+	\begin{displaymath}
+		\left(J(\phi)\right) [\: ] : 
+		\Gamma^\infty\left(\phi^\ast(VF)\right) \rightarrow	
+		\Gamma^\infty \left( 
+		\phi^\ast(V^\TwistedLinear F)
+		\right)
+	\end{displaymath}
+%
 \begin{figure}
 \centering
 \includegraphics[width=0.40\textwidth]{Pictures/Jacobi.png}
 \caption{\footnotesize \label{fig:jacobi}$ \left(J(\phi)\right) [ \delta\phi ]$ and $D$ target on the same space.}
 \end{figure}
-where:
-\begin{itemize}
-	\item $\phi_\lambda$ is an arbitrary variation of $\phi_0 = \phi$ generated by $\delta\phi$.
-	\item exactly as noted for the tangent vector of $\Conf$, we have for any $x\in M$:
+%
+Since $D[\phi_\lambda](x)$ is a smooth curve on $ V^\TwistedLinear F $ that is vertical w.r.t. $M$, the derivative involved has to be intended as the tangent velocity vector, thus $\dfrac{\diff}{\diff \lambda} D [\phi_\lambda]$ is the vertical vector field associated to the infinitesimal variation.
+Exactly as noted for the tangent vector of $\Conf$, we have for any $x\in M$:
 		\begin{displaymath}
 			\left.\dfrac{\diff}{\diff \lambda} D_\cdot [\phi_\lambda]\right\rvert_{\lambda=0}(x) \in V_M W
 			\quad \Rightarrow \quad
@@ -284,23 +306,103 @@ where:
 		because $D_\cdot[\phi_\lambda]$ can be regarded as a section of $V^\TwistedLinear F$ over $M$, 
 		thus the latter definition does not depend from the particular choice of variation $\phi_\lambda$ 
 		but only from its infinitesimal generator $\delta\phi$.
-	\item $\sigma$ is the canonical bundle-morphism
-		\begin{displaymath}
-			\sigma:  0^\ast \left( V_M W \right)  \; \rightarrow \;  0^\ast \left(V_E W \right) \simeq W
-		\end{displaymath}
-		 where $V_M W$ and $V_F W$ are the vertical sub-bundle of $T W$ w.r.t. $M$ and $F$ respectively 
-		 and $0$ is the zero-section of $W$ over $F$.
-\end{itemize}
-
+%
 The operator is well defined since
 \begin{displaymath}
 	\phi \in \Sol \quad \Rightarrow \quad D[\phi] \subset 0(E)
 \end{displaymath}
 
-\begin{remark}
-	The Jacobi operator $\left(J(\phi) \right) [\delta \phi]$ around a solution $\phi$ when acting on $\delta \phi \in T_\phi \Conf$ yields a twisted form that can be evaluated on a $V \in \Gamma\left(\phi^\ast(V^\TwistedLinear F )\right)$
-\end{remark}
 
+
+\begin{proposition}\label{Prop:JacobieLie}
+	The Jacobi operator $\left(J(\phi) \right) [\delta \phi]$
+	around a solution $\phi$ when acting on an infinitesimal variation $\delta \phi \in T_\phi \Conf$
+	yields a twisted form that can be evaluated on a $V \in \Gamma\left(V F \right)$
+	such that:
+	\begin{displaymath}	
+		\left\langle \left(J(\phi) \right) [\delta \phi] \right\vert
+		\left. V \right\rangle =
+		\phi^\ast \; \Lie_{\delta \phi} \left( i_V \omega \right)
+	\end{displaymath}
+\end{proposition}
+\begin{proof}
+The explicit action of the Jacobi Operator can be reconstructed as follows:
+\begin{displaymath}
+	D[\phi_\cdot](\cdot): (\lambda, x^\mu) \mapsto
+	\left( x^\mu, \phi_\lambda^A (x), \hat{D}[\phi_\lambda]_A(x) \right)
+	\in V^\TwistedLinear F 
+\end{displaymath}
+%
+\begin{align*}
+	\frac{\partial}{\partial \lambda} \eval{D[\phi_\lambda](\cdot)}_{\lambda=0}:
+	x \mapsto
+	\biggr(& x^\mu, \phi_0^A(x), \hat{D}[\phi_0]_A(x),\\
+	&	
+	\eval{\dfrac{\partial \phi^A(x)}{\partial \lambda}}_{\lambda=0}
+	 \dfrac{\partial}{\partial q^A} + 
+	\eval{\dfrac{\partial \hat{D}[\phi_\lambda]_A(x)}{\partial \lambda}}_{\lambda=0}
+	 \dfrac{\partial}{\partial q_A}	  \biggr)
+	 \in V_M(V^\TwistedLinear F)
+\end{align*}
+\begin{align*}
+	\left(J(\phi)\right) [\: ] (\cdot) =
+	\sigma \frac{\partial}{\partial \lambda} \eval{D[\phi_\lambda](\cdot)}_{\lambda=0}:
+	x \mapsto &
+	\left( x^\mu, \phi_0^A(x), 0,
+	\eval{\dfrac{\partial \hat{D}[\phi_\lambda]_A(x)}{\partial \lambda}}_{\lambda=0}
+	 \dfrac{\partial}{\partial q_A}	  \right)
+	 \in V_F(V^\TwistedLinear F) \\
+	 & \qquad \qquad \qquad \vert\wr \\
+	 &
+		\left( x^\mu, \phi_0^A(x),
+			\eval{\dfrac{\partial \hat{D}[\phi_\lambda]_A(x)}{\partial \lambda}}_{\lambda=0} \right)
+	 		\in V^\TwistedLinear F 
+\end{align*}
+	Therefore for all $x\in M$:
+	\begin{align*}
+		\left\langle \left(J(\phi) \right) [\delta \phi] \right\vert
+		\left. V \right\rangle_x &=
+		\left\langle \left(J(\phi) \right) [\delta \phi] (x) \right\vert
+		\left. V_x \right\rangle =
+		\left\langle \left(J(\phi) \right) [\delta \phi] (x)
+		 \right\vert
+		\left. V_x \right\rangle =\\
+		&=
+		\left\langle\left.		
+		\eval{\dfrac{\partial \hat{D}[\phi_\lambda]_A(x)}{\partial \lambda}}_{\lambda=0}
+		\right\vert
+		 V_x \right\rangle =
+		 \eval{
+		 	\dfrac{\partial}{\partial \lambda}
+		\left\langle\left.			 	
+		 	\hat{D}[\phi_\lambda]
+		 			\right\vert
+		 V \right\rangle _x
+		 }_{\lambda=0}
+	\end{align*}
+	from the linearity of the duality evaluation.\\
+	Plugging in the definition of motion operator we obtain 
+	\begin{displaymath}
+				\left\langle \left(J(\phi) \right) [\delta \phi] \right\vert
+		\left. V \right\rangle =
+		 \eval{
+		 	\dfrac{\partial}{\partial \lambda}
+				\left(
+					\phi^\ast_\lambda \left( i_V \omega \right) \right)
+		 }_{\lambda=0}	=
+		 \phi_0^\ast
+		 \eval{
+				\dfrac{\partial}{\partial \lambda}
+				\left(
+			 		\left(\phi_\lambda \cdot \phi_0^{-1}\right)^\ast
+					\left( i_V \omega \right) \right)
+		 }_{\lambda=0}	=
+		 		\phi_0^\ast \; \Lie_{\delta \phi} \left( i_V \omega \right)
+	\end{displaymath}
+	recognizing that $\left(\phi_\lambda \cdot \phi_0^{-1}\right)$ is the flux generated by $\delta \phi$.
+\end{proof}
+
+\clearpage \newpage
 \subsection{Construction of $\sigma$}
 Consider the two stacked bundle, $ W \rightarrow E$ vector bundle, $E \rightarrow M$ smooth bundle.
 
@@ -314,13 +416,13 @@ where $m$ is the standard bundle morphism of pull-back bundle:
   \includestandalone[mode=buildnew]{ms_sigmaconstruction}
 \end{figure}
 
-We have the following short exact sequence of bundle morphism over $W$
+We have the following short exact sequence of bundle morphism over $W$:
 \begin{figure}
   \centering
   \includestandalone[mode=buildnew]{sigma_exact}
 \end{figure}
-because
-
+since
+%
 \begin{displaymath}
 	\ker(i) = 0 (E) = i' \left( 0 \right)
 \end{displaymath}
@@ -382,7 +484,7 @@ Visually this is a map which "verticalize" w.r.t. $E$ the vertical vectors w.r.t
 
 
 
-\newpage
+\clearpage \newpage
 \section{Covariant approach: pre-symplectic form}
 \begin{figure}
 \centering
@@ -457,13 +559,14 @@ An important remark can be done:
 		\right)
 	\end{align*}
 	using the Cartan's magic formula twice and the commutation rule between Lie derivative and contraction operator $i_\cdot$.\\
-	The first term vanishes because $\omega= \diff \theta$ is exact by construction.\\
-	The second and the third term vanish because
+	The first term vanishes because $\omega= - \diff \theta$ is exact by construction.\\
+	The second and the third term vanish because, from proposition \ref{Prop:JacobieLie},
 	\begin{displaymath}
 		\left\langle \left( J(\phi) \right)[V_i] \right\vert \left. V_j \right\rangle = 
 		\phi^\ast \Lie_{V_i} \left( i_{V_j} \omega \right)
 	\end{displaymath}
-	and $V_i$ are solution of the Jacobi equation
+	and $V_i$ are solution of the Jacobi equation.\\
+	The last term vanishes since the lie bracket of two vertical vector field along $\phi$ is equal to the brackets of two vertical field over $F$ constant on each fiber.
 \end{proof}
 
 This nice condition represent a sort of exactness condition for the covariant pre-symplectic form.\\
@@ -634,12 +737,6 @@ In the case that $(\delta \varphi_i, \delta \pi_i) \in T_{(\varphi,\pi)}\Sol$ we
 \end{align*}
 thus proving the closedness of the symplectic current.
 
-\begin{wrapfigure}{L}{0.41\textwidth}
-\centering
-\includegraphics[width=0.40\textwidth]{Pictures/sigma.png}
-  %\caption{.}
-\end{wrapfigure}
-
 
 
 
@@ -650,11 +747,16 @@ thus proving the closedness of the symplectic current.
 \begin{thebibliography}{9}
 
 \bibitem{Gimmsy}
-  Leslie Lamport,
-  \emph{\LaTeX: a document preparation system},
-  Addison Wesley, Massachusetts,
-  2nd edition,
-  1994.
+	Gotay, M. J., Isenberg, J., Marsden, J. E., Montgomery,	R. (1998). 
+	Momentum Maps and Classical Relativistic
+	Fields. Part I: Covariant Field Theory, (August 2004), 68. 
+	Retrieved from http://arxiv.org/abs/physics/9801019
+
+\bibitem{primer}
+Benini, M., Dappiaggi, C., Hack, T.-P. (2013). Quantum Field Theory on Curved Backgrounds — a Primer. International Journal of Modern Physics A, 28(17), 1330023. https://doi.org/10.1142/S0217751X13300238
+
+\bibitem{forgeromero}
+Forger, M.,  Romero, S. V. (2005). Covariant poisson brackets in geometric field theory. Communications in Mathematical Physics, 256(2), 375–410. https://doi.org/10.1007/s00220-005-1287-8
 
 \end{thebibliography}
 
