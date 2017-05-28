@@ -3,7 +3,7 @@
 
 \documentclass[border=10pt, tikz]{standalone}
 \usepackage{tikz}
-\usepackage[multisym]{./Math-Symbols-List/toninus-math-symbols}
+\usepackage[multisym]{../Math-Symbols-List/toninus-math-symbols}
 
 \usetikzlibrary{arrows,positioning}
 \tikzset{%
@@ -70,7 +70,7 @@
 	\draw[projection]	(lindualJ1E_block.south west) -- (E_block); 
 	\draw[projection]	(dualVE_block) -- (E_block);
    
-	\draw[inclusion]	(Z_block) -- (volE_block);
+	\draw[inclusion]	(Z_block) -- node[above]{$i$} (volE_block);
 	\draw[projection]	(J2E_block) -- (J1E_block);
 
 	\draw[projection]	([xshift=-0.25cm] affdualJ1E_block.north) -- ([xshift=-0.25cm] lindualJ1E_block.south);
@@ -85,6 +85,11 @@
 	\draw[bend left,hammap]	(J1lindualJ1E_block.east) -| node[above,anchor= west] {$D_\mathcal{H}$}	(duallindualJ1E_block.north); 
 
 	\draw[<->]	(Z_block) -- node {$\Phi$}	(affdualJ1E_block); 
+	
+	% Legend
+	\node (legend) [draw,right=of M_block,align=left] {
+								$\longrightarrow$ \; : Bundle projection%\\
+    };  
 	
 
   \end{tikzpicture}

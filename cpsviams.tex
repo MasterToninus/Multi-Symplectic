@@ -1,11 +1,11 @@
 \title{Covariant Phase Space via MultiSymplectic Geometry}
 \author{
-        Antonio Michele Miti \\
-                Department of Mathematics and Physics\\
-        Università Cattolica del Sacro Cuore\\
-        via Musei X, Brescia xxx, \underline{Italy}
+	International Ph.D. Program in "Science" \\
+	"Differential geometry and applications to modern physics" \\
+	Department of Mathematics and Physics\\
+	Università Cattolica del Sacro Cuore\\
+	via Musei X, Brescia xxx, \underline{Italy}
 }
-\date{\today}
 
 \documentclass[a4paper,12pt,fleqn]{scrartcl}  %Per La Stampa
 \usepackage[a4paper, margin=2cm]{geometry}
@@ -14,6 +14,9 @@
 \usepackage[multisym, geomec, basic, diffgeo]{./Math-Symbols-List/toninus-math-symbols}
 \usepackage[subpreambles=true]{standalone}
 \usepackage{commath}
+
+\usepackage[italian,english]{babel}
+\usepackage[utf8]{inputenc}
 
 \usepackage{graphicx}
 \usepackage{hyperref}
@@ -28,19 +31,18 @@
 \maketitle
 
 \begin{abstract}
-In this talk we detail the construction of the covariant phase space starting from multisymplectic framework of geometric classic field theories following essentially the paper written by forger romero. 
+In this short talk we present the results contained in the paper \emph{"Covariant Poisson brackets in geometric field theory"} written by M. Forger and S. V. Romero \cite{forgeromero}.
+In particular we focus our attention on the construction of the \emph{Covariant Phase Space} starting from the multi-symplectic approach to geometric classic field theories.
 %Con lo stesso linguaggio si può descrivere più precisamente l'algoritmo di Peierls partendo dalle variazione di soluzioni sottomesse ad una variazione di lagrangiana.
 
 \end{abstract}
 
-\section{Introduction}
+\section{Multisymplectic landscape at glance}
 Let's briefly recall in what consists the multisymplectic approach to mechanics of field systems in order to understand its relationship with the covariant phase space approach.
 
-\begin{figure}
-  \centering
-  \includestandalone[mode=buildnew]{ms_landscape}
-  \caption{multisymplectic landscape at glance}
-\end{figure}
+\begin{center}
+  \includestandalone[mode=buildnew]{Pictures/Figure_ms_landscape}
+\end{center}
 
 \begin{itemize}
  \item the starting point is the \emph{configuration bundle} 
@@ -53,48 +55,54 @@ Let's briefly recall in what consists the multisymplectic approach to mechanics 
  	J^1E = \left( \pi_{J^1 M,E} : J^1 E\rightarrow E \right)
  	\end{displaymath} 
  	that is an affine bundle over $E$.
- \item Then, we considered other two vector bundle derived from the first jet:
+ \item then, we considered other two vector bundle derived from the first jet bundle. 
+ 	The twisted affine dual of $J^1E$ 
  	\begin{displaymath}
  	\AffDualJet  = \left( \pi_{ \AffDualJet ,E} : \AffDualJet  \rightarrow E \right)
  	\end{displaymath}
-	twisted affine dual of $J^1E$ called \emph{"extended multiphase space"}.
+ 	called \emph{"extended multiphase space"} and th twisted linear dual of $J^1 E$
 	\begin{displaymath}
 		\LinDualJet  = \left( \pi_{ \LinDualJet ,E} : \LinDualJet \rightarrow E \right)
 	\end{displaymath}
-	twisted linear dual of $J^1 E$ called \emph{"standard multiphase space"}. \footnote{It can be seen as the dual bundle of the vector bundle $\vec{J^1E}$ linear model of $J^1E$}
+	called \emph{"standard multiphase space"} \footnote{$\LinDualJet$ can be seen as the dual bundle of the vector bundle $\vec{J^1E}$ linear model of $J^1E$}.\\
 	The first one can be also seen as an affine line bundle over the second one.
 	
-\item It turns out that  $\LinDualJet $ carries a naturally defined multisymplectic form $\omega = -\ExtD \theta$ derived by a multicanonical m-form $\theta$. \\
-	(This has been obtained pulling back the tautological m-form $\theta_\Lambda$ from $\bigwedge^m (E)$.) \\
+\item It turns out that  $\LinDualJet $ carries a naturally defined multi-symplectic form $\omega = -\ExtD \theta$ derived by a multicanonical m-form $\theta$, obtained by pulling back the tautological m-form $\theta_\Lambda$ from $\bigwedge^m (E)$.\\
 	Thus, it can be considered the theoretical analogue of the cotangent bundle in ordinary geometric mechanics.
 	
-\item The dynamics can be implemented in two alternative way, fixing a further structure.\\
-	In the Lagrangian picture is fixed a bundle map:
+\item Dynamics can be implemented in two different way by fixing a further structure.\\
+	In the Lagrangian picture has to be fixed a bundle map:
 	\begin{displaymath}
 		\Lagrangian : J^1 E \rightarrow \bigwedge^m (M)
 	\end{displaymath}
-	while in the Hamiltonian framework si fixed a section:
+	, called \emph{Lagrangian density}, 	while in the Hamiltonian framework has to be fixed a section:
 	\begin{displaymath}
 		\Hamiltonian : \LinDualJet \rightarrow \AffDualJet
 	\end{displaymath}
+	called \emph{Hamiltonian density}.
 
-\item Both of them determine a \emph{Legendre map} computed as a fiber derivative.
-	Mainly we are interested  in
+\item Both of them determine a \emph{Legendre map}, computed as a fiber derivative, which allows us to move from one framework to another.
+	Mainly we are interested  in the following:
 	\begin{displaymath}
 		\mathbb{F} \Lagrangian : J^1 E \rightarrow \AffDualJet		
 	\end{displaymath}
-	The two dynamics function can be considered equivalent under the condition of \emph{hyper-regularity}\cite[chapter, p.~215]{Gimmsy}.
+	The two dynamics function $\Lagrangian$ and $\Hamiltonian$ can be considered equivalent under the condition of \emph{hyper-regularity}\cite[chapter, p.~215]{Gimmsy}.
 
-\item Via $\mathbb{F} \Lagrangian$ we can pull-back the canonical forms on $J^1 E$ to give the \emph{Poincarè - Cartan forms}
+\item Via $\mathbb{F} \Lagrangian$ we can pull-back the canonical forms on $J^1 E$ to give the \emph{Poincaré - Cartan forms} giving:
 	\begin{displaymath}
-		\theta_\Lagrangian = \mathbb{F} \Lagrangian^\ast \theta \qquad \omega_\Lagrangian = - \diff \theta_\Lagrangian
+		\theta_\Lagrangian = \mathbb{F} \Lagrangian^\ast \theta 
+		\qquad 
+		\omega_\Lagrangian = - \diff \theta_\Lagrangian
 	\end{displaymath}
-	and via $\Hamiltonian$ we can pull-back the canonical forms on $\LinDualJet$ to give the \emph{De Donder - Weyl forms}
+	Via $\Hamiltonian$ we can pull-back the canonical forms on $\LinDualJet$ to give the \emph{De Donder - Weyl forms} giving:
 	\begin{displaymath}
-		\theta_\Hamiltonian = \Hamiltonian^\ast \theta \qquad \omega_\Hamiltonian = - \diff \theta_\Lagrangian
+		\theta_\Hamiltonian = \Hamiltonian^\ast \theta 
+		\qquad 
+		\omega_\Hamiltonian = - \diff \theta_\Lagrangian
 	\end{displaymath}
 	
-\item At last, are introduced the \emph{Euler-Lagrange map}
+\item At last, can be introduced two map in order to encoded the field equations.
+	In the Lagrangian framework we consider the \emph{Euler-Lagrange map}
 	\begin{displaymath}
 		D_\Lagrangian : J^2 E \rightarrow V^\TwistedLinear E
 	\end{displaymath}
@@ -102,8 +110,8 @@ Let's briefly recall in what consists the multisymplectic approach to mechanics 
 	\begin{displaymath}
 		\left\langle D_\Lagrangian(\varphi, \partial \varphi , \partial^2 \varphi) \right\vert \left. V \right\rangle = (j^1 \varphi)^\ast \left( j^1V \lrcorner \omega_\Lagrangian \right)
 	\end{displaymath}
-	 a bundle-morphism when evaluated on a vertical field $V$ on $E$. \\
-	And the \emph{DeDonder-Weyl map}
+	 a bundle-morphism when evaluated on a vertical field $V$ on $E$.\\
+	In the Hamiltonian framework we consider the \emph{DeDonder-Weyl map}
 	\begin{displaymath}
 		D_\Hamiltonian : J^1\left(\LinDualJet \right) \rightarrow V^\TwistedLinear \left(\LinDualJet \right)
 	\end{displaymath}
@@ -114,13 +122,13 @@ Let's briefly recall in what consists the multisymplectic approach to mechanics 
 	when evaluated on a vertical field $V$ on $\LinDualJet$.
 	
 \item	
-	Imposing the vanishing of this map on an holonomic section gives a condition which corresponds to the well-know motion equations when rapresented in coordinate.
+	Imposing the vanishing of this map on an holonomic section gives a condition which corresponds to the well-know motion equations when represented in local coordinate charts.
 
 \end{itemize}
 
 \clearpage \newpage
 \section{Covariant phase space approach}
-The gist of the transition from the \emph{multi-symplectic approach} to the \emph{Covariant Functional Approach} - based on the \emph{Covariant Phase Space} - is basically to perform a change of perspective.\\
+The gist of the transition from the \emph{multi-symplectic approach} to the \emph{(Covariant) Functional Approach} - based on the \emph{Covariant Phase Space} - is basically to perform a change of perspective.\\
 We have to move our attention from the bundles to the cross-sections on the bundles.
 
 The smooth bundle to be considered depends on the dynamical framework we are employing.
@@ -151,10 +159,11 @@ In this approach there are two central objects:
 	\end{definition}
 %
 	\begin{remark}
-		Since the jet functor $j^1$ acts injectively on sections, we can equivalently consider any other holonomic jet sections
+		The jet functor $j^1$ acts injectively on smooth cross sections
 		\begin{displaymath}
 			\Conf \simeq j^k \Gamma^\infty(F)
 		\end{displaymath}
+		so, we can equivalently consider holonomic jet sections of any order as the element of the configuration space.
 	\end{remark}	
 %
 	\begin{definition}[Space of Dynamics (on-shell) configurations]\label{Def:SolSpace}
@@ -166,20 +175,19 @@ In this approach there are two central objects:
 	\end{definition}
 
 The key point of the latter definition is that the \emph{Euler-Lagrange} map and the \emph{DeDonder-Weyl} map, being bundle-morphism, can be regarded as mapping from $\Conf$ to the section of a suitable vector bundle composing with the jet functor $j$.
-
-\begin{equation}
-	D_\Lagrangian[\; ] = D_\Lagrangian \circ j^2 : \quad \Gamma^\infty(E) \ni \varphi \quad \mapsto \quad D_\Lagrangian[ \varphi ] \in \Gamma^\infty \left( \phi^\ast \left(V^\TwistedLinear E \right)\right)
-\end{equation}
-
-\begin{equation}
-	D_\Hamiltonian[\; ] = D_\Hamiltonian \circ j^1 : \quad \Gamma^\infty(F) \ni (\varphi,\pi) \quad \mapsto \quad D_\Hamiltonian[ (\varphi,\pi) ] \in \Gamma^\infty \left( (\varphi,\pi)^\ast \left(V^\TwistedLinear F \right)\right)
-\end{equation}
-
+%
+\begin{align*}
+	D_\Lagrangian[\; ] &= 
+	D_\Lagrangian \circ j^2 : \quad \Gamma^\infty(E) \ni \varphi \quad \mapsto \quad D_\Lagrangian[ \varphi ] \in \Gamma^\infty \left( \phi^\ast \left(V^\TwistedLinear E \right)\right) \\
+	D_\Hamiltonian[\; ] &= 
+	D_\Hamiltonian \circ j^1 : \quad \Gamma^\infty(F) \ni (\varphi,\pi) \quad \mapsto \quad D_\Hamiltonian[ (\varphi,\pi) ] \in \Gamma^\infty \left( (\varphi,\pi)^\ast \left(V^\TwistedLinear F \right)\right)
+\end{align*}
+%
 The target base is a vector space, more precisely a frechet space \cite[Cap.2]{Ban} and makes sense to ask whetever $D_\cdot [\phi]$ is equal to the 0-section.
 
 Again, we would like to employ a collective notation to denote the motion equation operators $D_\Lagrangian$ and $D_\Hamiltonian$:
 \begin{notation}
-	Since $D_\Lagrangian$ and $D_\Hamiltonian$ depend on different order jet bundle over $F$, can not be introduced directly a common notation on the multi-symplectic ground but we have to pass to the functional framework:
+	Since $D_\Lagrangian$ and $D_\Hamiltonian$ depend jet bundle over $F$ of different order, can not be introduced directly a common notation on the multi-symplectic ground but we have to pass to the functional framework:
 \begin{displaymath}
 	D[\; ] = \; \Gamma^\infty(F) \ni \phi \quad \mapsto \quad D[ \phi ] \in \Gamma^\infty \left( \phi^\ast \left(V^\TwistedLinear F \right)\right)
 \end{displaymath}	
@@ -208,28 +216,26 @@ in other words, $D[\phi](x) \in V^\TwistedLinear_{\phi(x)}F$ is a twisted linear
 			\hline
 		\end{tabular}
 	\end{center}	
-	
-	
-	Noticing the recurring scheme we will also denote $	W = V^\TwistedLinear F $
+	%
+	Noticing the recurring scheme we will also denote $	W = V^\TwistedLinear F $.
 \end{notation}
 
-The remarkable feature of the $\Sol$ space is that it carries a naturally defined pre-symplectic form $\Omega$. Natural beside the fact that its very structure, as a set, is expicitly determined by the fixed Lagrangian or Hamiltonian.\\
+Remarkable feature of the $\Sol$ space is that it carries a naturally defined pre-symplectic form $\Omega$. Natural beside the fact that its very structure, as a set, is expicitly determined by the fixed Lagrangian or Hamiltonian.\\
 Therefore, is the candidate to  be the field-theoretic (Covariant) phase space.
 
-Since $\Conf$ and $\Sol$ are in general not linear, we have to regard them as a manifold.
-Hence, we have to specify conveniently the structure of their tangent space in order to make clair the preceeding claim.
-
-The first thing to point out is the following chain of inequalities:
-\begin{equation}
-	\Gamma^\infty_c\left(\phi^*(VF)\right) \; \subseteq \; T_\phi\Sol \; \subset \; T_\phi\Conf \; \subseteq \; \Gamma^\infty\left( \phi^\ast (VF) \right)
-\end{equation}
-
-\begin{figure}
-\centering
+\begin{center}
 \includegraphics[width=0.49\textwidth]{Pictures/variations.png}
 %\caption{\label{fig:variations}Covariant tangent fields as regular variations.}
-\end{figure}
+\end{center}
 
+Since $\Conf$ and $\Sol$ are in general not linear, we have to regard them as a manifold.
+Hence, we have to specify conveniently the structure of their tangent space in order to make clear the previous claim.
+
+The first thing to point out is the following chain of inequalities:
+\begin{displaymath}
+	\Gamma^\infty_c\left(\phi^*(VF)\right) \; \subseteq \; T_\phi\Sol \; \subset \; T_\phi\Conf \; \subseteq \; \Gamma^\infty\left( \phi^\ast (VF) \right)
+\end{displaymath}
+%
 This condition stems from the fact that we want to interpret regular curves on $\Conf$ as smooth variations of field configurations. \\
 Therefore, a parametrized regular curve as to be regarded as a family of diffeomerphisms, the flow generated by a vertical tangent field on $F$.\\
 The pull-back are there to remark that $T_\phi \Conf$ consists of the infinitesimal smooth variations of $\phi$ thus are vertical field of $F$ \underline{along} the section $\phi$.
@@ -245,22 +251,22 @@ The pull-back are there to remark that $T_\phi \Conf$ consists of the infinitesi
 	\end{center}
 \end{notation}
 
-According to this interpretation, $T_\phi\Sol$ should consists of the generators of those variations that maps, at least infinitesimally, a solution $\phi\in\Sol$ in another solution.
+According to this interpretation, $T_\phi\Sol$ should consists of the generators of those variations that maps, at least infinitesimally, a solution $\phi\in\Sol$ in another solution.\\
+In other words, it consists of the solutions of the \emph{Jacobi equations}.
 Rigourosly, this can be expressed in the following definition:
-
 	\begin{definition}[Tangent space to the Space of Solutions]\label{Def:TangentSol}
+		on a solution $\phi \in \Sol$, is the vector space
 		\begin{displaymath}
-			T_\phi \Sol \coloneqq \ker(J[\phi]_\cdot) \qquad \phi \in \Sol
+			T_\phi \Sol \coloneqq \ker(J[\phi]_\cdot)
 		\end{displaymath}
+		where $J$ is the so-called \emph{Jacobi Operator}.
 	\end{definition}
-In other words, it consists of the solutions of the Jacobi equations.
 
 
-\clearpage \newpage
 \section{Jacobi Operator}\label{Sec:JacobiOperator}
-Intuitively, the Jacobi equation are the formal linearizazion of the motion equation around a solution $\phi$.\\
-Precisely this can be encoded in the following operator:
-
+Intuitively, the Jacobi equation are the formal linearization of the motion equation around a solution $\phi$.\\
+Precisely they can be encoded in the following operator:
+%
 	\begin{definition}[Jacobi operator pertaining to $D$ around a solution $\phi \in \Sol$]\label{Def:JacobiOp} is the bundle map over $F$:
 		\begin{displaymath}
 			J(\phi) \; : \; \phi^\ast(VF) \rightarrow	\phi^\ast(V^\TwistedLinear F) 
@@ -268,57 +274,67 @@ Precisely this can be encoded in the following operator:
 			= \sigma \left( \left.\dfrac{\diff}{\diff \lambda} D [\phi_\lambda](x) \right\rvert_{\lambda=0} \right)
 		\end{displaymath}
 		where $V\in (\phi^\ast(VF))_{\phi(x)} = V_{\phi(x)}F$ and $\phi_\lambda$ is a regular variation generated by a $\delta\phi$ such that $\delta\phi_x = V$ and
-		$\sigma$ is the canonical bundle-morphism
+		$\sigma$ is the canonical bundle-morphism \footnote{see \ref{Section:sigma} for further details.}
 		\begin{displaymath}
 			\sigma:  0^\ast \left( V_M W \right)  \; \rightarrow \;  0^\ast \left(V_E W \right) \simeq W
 		\end{displaymath}
 		 where $V_M W$ and $V_F W$ are the vertical sub-bundle of $T W$ w.r.t. $M$ and $F$ respectively 
 		 and $0$ is the zero-section of $W$ over $F$.
 	\end{definition}
-	As a bundle-map, $J$ can be naturally interpreted functionally as
-	\begin{displaymath}
-		\left(J(\phi)\right) [\: ] : 
-		\Gamma^\infty\left(\phi^\ast(VF)\right) \rightarrow	
-		\Gamma^\infty \left( 
-		\phi^\ast(V^\TwistedLinear F)
-		\right)
-	\end{displaymath}
+	%
+	\begin{remark}
+		Being $J$ a bundle morphism, it can be naturally interpreted functionally as
+		\begin{displaymath}
+			\left(J(\phi)\right) [\: ] : 
+			\Gamma^\infty\left(\phi^\ast(VF)\right) \rightarrow	
+			\Gamma^\infty \left( 
+			\phi^\ast(V^\TwistedLinear F)
+			\right)
+		\end{displaymath}
+	\end{remark}
 %
-\begin{figure}
-\centering
-\includegraphics[width=0.40\textwidth]{Pictures/Jacobi.png}
-\caption{\footnotesize \label{fig:jacobi}$ \left(J(\phi)\right) [ \delta\phi ]$ and $D$ target on the same space.}
-\end{figure}
-%
-Since $D[\phi_\lambda](x)$ is a smooth curve on $ V^\TwistedLinear F $ that is vertical w.r.t. $M$, the derivative involved has to be intended as the tangent velocity vector, thus $\dfrac{\diff}{\diff \lambda} D [\phi_\lambda]$ is the vertical vector field associated to the infinitesimal variation.
+  \begin{minipage}[r]{0.5\textwidth}
+    \includegraphics[width=0.85\textwidth]{Pictures/Jacobi.png}
+  \end{minipage}\hfill
+  \begin{minipage}[l]{0.5\textwidth}
+	Note that $ \left(J(\phi)\right) [ \delta\phi ]$ and $D$ target on the same space.
+  \end{minipage}
+
+
+
+Since $D[\phi_\lambda](x)$ is a smooth curve on $ V^\TwistedLinear F $, that is also vertical w.r.t. $M$, 
+the derivative involved has to be intended as the tangent velocity vector,
+thus $\dfrac{\diff}{\diff \lambda} D [\phi_\lambda]$ is the vertical vector field associated to the infinitesimal variation.\\
 Exactly as noted for the tangent vector of $\Conf$, we have for any $x\in M$:
 		\begin{displaymath}
-			\left.\dfrac{\diff}{\diff \lambda} D_\cdot [\phi_\lambda]\right\rvert_{\lambda=0}(x) \in V_M W
+			\left.\dfrac{\diff}{\diff \lambda} D [\phi_\lambda]\right\rvert_{\lambda=0}(x) \in V_M W
 			\quad \Rightarrow \quad
-			\left.\dfrac{\diff}{\diff \lambda} D_\cdot [\phi_\lambda]\right\rvert_{\lambda=0} \in D[\phi]^\ast \left( V_M \left( V^\TwistedLinear \right)\right)
+			\left.\dfrac{\diff}{\diff \lambda} D [\phi_\lambda]\right\rvert_{\lambda=0} \in D[\phi]^\ast \left( V_M \left( V^\TwistedLinear \right)\right)
 		\end{displaymath}
-		because $D_\cdot[\phi_\lambda]$ can be regarded as a section of $V^\TwistedLinear F$ over $M$, 
-		thus the latter definition does not depend from the particular choice of variation $\phi_\lambda$ 
+		because $D[\phi_\lambda]$ can be regarded as a section of $V^\TwistedLinear F$ over $M$.
+		Hence the latter definition does not depend from the particular choice of variation $\phi_\lambda$ 
 		but only from its infinitesimal generator $\delta\phi$.
-%
-The operator is well defined since
+
+Furthermore, since
 \begin{displaymath}
 	\phi \in \Sol \quad \Rightarrow \quad D[\phi] \subset 0(E)
 \end{displaymath}
+the action of $\sigma$ is legit and operator $J$ results well-defined.
+%
 
 
 
-\begin{proposition}\label{Prop:JacobieLie}
+\begin{lemma}\label{Prop:JacobieLie}
 	The Jacobi operator $\left(J(\phi) \right) [\delta \phi]$
 	around a solution $\phi$ when acting on an infinitesimal variation $\delta \phi \in T_\phi \Conf$
-	yields a twisted form that can be evaluated on a $V \in \Gamma\left(V F \right)$
-	such that:
+	yields a twisted form that can be evaluated on any $V \in \Gamma\left(V F \right)$
+	yields the following expression:
 	\begin{displaymath}	
 		\left\langle \left(J(\phi) \right) [\delta \phi] \right\vert
 		\left. V \right\rangle =
 		\phi^\ast \; \Lie_{\delta \phi} \left( i_V \omega \right)
 	\end{displaymath}
-\end{proposition}
+\end{lemma}
 \begin{proof}
 The explicit action of the Jacobi Operator can be reconstructed as follows:
 \begin{displaymath}
@@ -332,7 +348,7 @@ The explicit action of the Jacobi Operator can be reconstructed as follows:
 	x \mapsto
 	\biggr(& x^\mu, \phi_0^A(x), \hat{D}[\phi_0]_A(x),\\
 	&	
-	\eval{\dfrac{\partial \phi^A(x)}{\partial \lambda}}_{\lambda=0}
+	\eval{\dfrac{\partial \phi^A_\lambda(x)}{\partial \lambda}}_{\lambda=0}
 	 \dfrac{\partial}{\partial q^A} + 
 	\eval{\dfrac{\partial \hat{D}[\phi_\lambda]_A(x)}{\partial \lambda}}_{\lambda=0}
 	 \dfrac{\partial}{\partial q_A}	  \biggr)
@@ -374,8 +390,8 @@ The explicit action of the Jacobi Operator can be reconstructed as follows:
 		 V \right\rangle _x
 		 }_{\lambda=0}
 	\end{align*}
-	from the linearity of the duality evaluation.\\
-	Plugging in the definition of motion operator we obtain 
+	from the linearity of the twisted duality pairing $<\,|\,>$.\\
+	Plugging  the definition of motion operator $D$ in the latter expression, we obtain:
 	\begin{displaymath}
 				\left\langle \left(J(\phi) \right) [\delta \phi] \right\vert
 		\left. V \right\rangle =
@@ -396,50 +412,47 @@ The explicit action of the Jacobi Operator can be reconstructed as follows:
 	recognizing that $\left(\phi_\lambda \cdot \phi_0^{-1}\right)$ is the flux generated by $\delta \phi$.
 \end{proof}
 
-\clearpage \newpage
-\subsection{Construction of $\sigma$}
+\newpage
+\subsection{Construction of $\sigma$}\label{Section:sigma}
 Consider the two stacked bundle, $ W \rightarrow E$ vector bundle, $E \rightarrow M$ smooth bundle.
-
-where $m$ is the standard bundle morphism of pull-back bundle:
+	\begin{center}
+	  \includestandalone[mode=buildnew]{Pictures/Figure_ms_sigmaconstruction}
+	\end{center}
+%
+Let us call $m$ the standard bundle morphism of pull-back bundles:
 \begin{displaymath}
 	m : \left( \pi^\ast \left( T E \right) \right)_w = \{w\} \times \{T_{\pi(w)} \} \mapsto T_{\pi(w)} E
 \end{displaymath}
 
-\begin{figure}
-  \centering
-  \includestandalone[mode=buildnew]{ms_sigmaconstruction}
-\end{figure}
-
 We have the following short exact sequence of bundle morphism over $W$:
-\begin{figure}
-  \centering
-  \includestandalone[mode=buildnew]{sigma_exact}
-\end{figure}
-since
+	\begin{center}
+	  \includestandalone[mode=buildnew]{Pictures/Figure_sigma_exact}
+	\end{center}
+inasmuch as
 %
-\begin{displaymath}
+\begin{eqnarray*}
 	\ker(i) = 0 (E) = i' \left( 0 \right)
-\end{displaymath}
-\begin{displaymath}
 	\ker\left( T \pi_{E,W} \right) = V_E W = i\left( V_E W \right)
-\end{displaymath}
-\begin{displaymath}
 	\ker\left(T \pi_{M,E}\right) = V_M E = T \pi_{E,W} \left( V_M W \right)
-\end{displaymath}
+\end{eqnarray*}
+
 
 We can exhibit a right splitting, that is:
 \begin{displaymath}
 	u : C \rightarrow B \quad \textrm{s.t.} \quad u \circ T \pi_{E,W} = \textrm{id}_B
 \end{displaymath}
-so, by splitting lemma, we have a left splitting $\sigma : B \rightarrow A$.
+so, by splitting lemma, we have a left splitting $\sigma : B \rightarrow A$ that is exactly the searched operator.
 
 The claimed right splitting is the following:
-\begin{align*}
-		u = T0 \circ m \; : & \; \pi^\ast_{E,W} \left(TE \right) \rightarrow TE \rightarrow TW \\
-						& \{w\} \times \{V_{\pi(w)} \} \mapsto V_{\pi(w)} \mapsto \left( T_{\pi(w)}0\right) (V_{\pi(w)})
-\end{align*}
-In fact, since $0 \in \Gamma (W,E)$:
-
+	\begin{displaymath}
+		u = T0 \circ m \; : \; 
+		\begin{array}{ccc}
+			\pi^\ast_{E,W} \left(TE \right) &\rightarrow TE &\rightarrow TW \\
+			\{w\} \times \{V_{\pi(w)} \} &\mapsto V_{\pi(w)} &\mapsto \left( T_{\pi(w)}0\right) (V_{\pi(w)})		
+		\end{array}
+	\end{displaymath}
+%
+In fact, since $0 \in \Gamma (W,E)$, we have:
 \begin{displaymath}
 	\textrm{T}_e 0 \circ \textrm{T}_\omega \pi_{E,W} V =
 	\textrm{T}_\omega \left( 0 \circ \pi_{E,W} \right) V = 
@@ -451,51 +464,52 @@ Therefore, we have the following decomposition:
 	\left( V_M W \right)_{0(e)} = 
 	i\left[ V_E W \right]_{0(e)} \oplus \left( T_e 0 \left[ V_e E\right] \right)
 \end{displaymath}
-determining an intrinsic mapping 
+which determine an intrinsic mapping 
 \begin{displaymath}
 	\sigma_e : \left( V_M W \right)_{0(e)} \rightarrow \left( V_E W \right)_{0(e)} \simeq W_e
 \end{displaymath}
-
-which is simply a  projection on the first component.
+that is simply the projection on the first component.
 
 Since we have such projection for all $e \in E$ and it acts fiberwise, it can be regarded as a bundle morphism over $E$:
 \begin{displaymath}
 	\sigma : 0^\ast \left( V_M W \right) \rightarrow 0^\ast \left( V_E W \right) \simeq W
 \end{displaymath} 
+Visually this is a map which "verticalize" w.r.t. $E$ the vertical vectors w.r.t. $M$ along $0(E) \subset W$.
+%
 
-\begin{figure}
-\centering
-  \includestandalone[mode=buildnew]{sigma}
-  %\caption{.}
-\end{figure}
-Visually this is a map which "verticalize" w.r.t. $E$ the vertical vectors w.r.t. $M$ along $0(E) \subset W$
-
-\begin{figure}
+\begin{minipage}{.5\textwidth}
   \centering
-    \includestandalone[mode=buildnew]{fieldJacobi}
-  %\caption{.}
-\end{figure}
+	\includestandalone[width=0.85\linewidth, mode=buildnew]{Pictures/Figure_sigmaAction}
+ \\ \small{general case}
+\end{minipage}
+\begin{minipage}{.5\textwidth}
+  \centering
+	\includestandalone[width=0.85\linewidth, mode=buildnew]{Pictures/Figure_sigmaJacobi}
+ \\ \small{ (Jacobi field variation)}
+\end{minipage}%
 
 
 
-\clearpage \newpage
+\newpage
 \section{Covariant approach: pre-symplectic form}
-\begin{figure}
-\centering
-\includegraphics[width=0.40\textwidth]{Pictures/symform.png}
-  \caption{(temp)}
-\end{figure}
+ Roughly, the strategy of construction is the following:
+	\vspace{0.5cm}
 
-Rough strategy:
-\begin{itemize}
-	\item Find a way to contract $\delta \phi$ and $\delta \phi '$ , seen as tangent vector field on $E$, with the multi-symplectic forms $\omega$.
-	\item pull-back the obtained $m-1$ form to $M$, oriented manifold.
-	\item Integrate thus form on a suitable $(m-1)$ dimensional sub-manifold of $M$.
-	\item take the resulting number as the evaluation of the desired form on the two variations.  
-\end{itemize}
+  \begin{minipage}[l]{0.5\textwidth}
+	\includegraphics[width=\textwidth]{Pictures/symform.png}
+  \end{minipage}\hfill
+  \begin{minipage}[r]{0.45\textwidth}
+	\begin{itemize}
+		\item Find a way to contract $\delta \phi$ and $\delta \phi '$ , seen as tangent vector field on $E$, with the multi-symplectic forms $\omega$.
+		\item pull-back the obtained $m-1$ form to $M$, oriented manifold.
+		\item Integrate thus form on a suitable $(m-1)$ dimensional sub-manifold of $M$.
+		\item take the resulting number as the evaluation of the desired form on the two variations.  
+	\end{itemize}
+  \end{minipage}\hfill
+  
+  	\vspace{1cm}
 
-Rigourosly, we define $\forall \phi \in \Conf$, $\forall \Sigma \subset M$ $m-1$ dimensional, compact submanifold of $M$:
-
+Rigourosly, fixed  $\Sigma$, a compact $m-1$ dimensional submanifold of $M$, we define:
 \begin{definition}[(covariant) pre-symplectic form in $\phi$ pertaining to $\Sigma$]\label{Def:presymform}
 	\begin{displaymath}
 		\Omega_\Gamma ( \phi ) : \textrm{T}_\phi \Conf \times \textrm{T}_\phi \Conf \rightarrow \Real
@@ -507,9 +521,8 @@ Rigourosly, we define $\forall \phi \in \Conf$, $\forall \Sigma \subset M$ $m-1$
 		\int_\Sigma \Upsilon_\phi \left( \delta \phi_1 , \delta \phi_2 \right) = 
 		\begin{cases}
 			\int_\Sigma (j^1 \varphi)^\ast \left[ i_{j^1 \delta\varphi_2} i_{j^1 \delta \varphi_1} \omega_\Lagrangian \right]
-			& \qquad \textrm{(Lagrangian)} \\
-			\int_\Sigma (\varphi, \pi)^\ast \left[ i_{( \delta \varphi_2, \delta \pi_2)} i_{( \delta \varphi_1, \delta \pi_1)} \omega_\Hamiltonian \right]
-			& \qquad \textrm{(Hamiltonian)} 		
+			\\
+			\int_\Sigma (\varphi, \pi)^\ast \left[ i_{( \delta \varphi_2, \delta \pi_2)} i_{( \delta \varphi_1, \delta \pi_1)} \omega_\Hamiltonian \right]	
 		\end{cases}
 	\end{displaymath}
 where the form $\Upsilon_\phi \left( \delta \phi_1 , \delta \phi_2 \right)  \in \Omega^{m-1}(M)$ to be integred on $\Sigma$ is called \emph{Symplectic current}.
@@ -529,12 +542,12 @@ where the form $\Upsilon_\phi \left( \delta \phi_1 , \delta \phi_2 \right)  \in 
 \end{notation}
 
 
-The form $\Omega_\Sigma (\phi)$ is manifestly bilinear and skew-symmetric but at this stage is far from obvious to prove exactness and non-degeneracy. We can not conclude yet that it is a symplectic form.
+The form $\Omega_\Sigma (\phi)$ is manifestly bilinear and skew-symmetric but it is far from obvious, at this stage, to prove exactness and non-degeneracy. We can not conclude yet that it is a symplectic form.
 However, the clumsy dependence from the choice $\Sigma$ represent a more urgent problem.
 An important remark can be done:
 
 \begin{proposition}\label{Prop:CurrentClosed}
-	When restricted to $\textrm{T}_\phi \Sol$, the symplectic current is a closed form. That is:
+	When restricted to $\textrm{T}_\phi \Sol$, the symplectic current is a closed form:
 	\begin{displaymath}
 		\diff \Upsilon_\phi \left( \delta \phi_1 , \delta \phi_2 \right) = 0 \qquad \delta \phi_1 , \delta \phi_2 \in T_\phi \Sol
 	\end{displaymath}
@@ -565,16 +578,17 @@ An important remark can be done:
 
 This nice condition represent a sort of exactness condition for the covariant pre-symplectic form.\\
 However, it is not sufficient to eliminate the unwanted dependence from the choice of $\Sigma$.
-In order to get rid of this drawback are to be introduced some other assumptions.\\
-It is customary to require the working condition of physical field system theories on curved background:
+In order to get rid of this drawback is necessary to introduce some other assumptions.\\
+It is customary to require the working condition of physical field system theories on curved background\cite{primer}:
 \begin{enumerate}
 	\item $M$ is a \emph{globally-hyperbolic spacetime}
 	\item $\Sigma$ is an arbitrary cauchy surface
 	\item $T_\phi \Conf =\Gamma_{sc} (V^\TwistedLinear F )$ i.e. are only considered space-like compact variations.
 \end{enumerate}
-The first condition guarantees that exists a Cauchy surface and that the spacetime can be folieted according to it $M= \Sigma \times \Real$.\\
+%
 Considering a spacetime \footnote{Oriented, time-oriented, connected, Lorentzian smooth manifold. } allow us to define a space-like compact support.\\
-From last condition follows that for any Cauchy surface $\Sigma$, $ \supp(\Upsilon_\phi (\delta \phi_1, \delta \phi_2) \cap \Gamma$ is compact, thus the integration involved in definition \ref{Def:presymform} is always well-defined.
+So, the first condition guarantees that exists a Cauchy surface and that the spacetime can be foliated according to it $M= \Sigma \times \Real$.\\
+Whereas, from the last condition, follows that for any Cauchy surface $\Sigma$, $ \supp(\Upsilon_\phi (\delta \phi_1, \delta \phi_2) \cap \Gamma$ is compact, thus the integration involved in definition \ref{Def:presymform} is always well-defined.
 
 \begin{proposition}
 	In this condition $\Omega_\Sigma (\phi): T_\phi \Sol \times T_\phi \Sol \rightarrow \Real$ does not depends on the choice of $\Sigma$ anymore.
@@ -594,8 +608,8 @@ From last condition follows that for any Cauchy surface $\Sigma$, $ \supp(\Upsil
 
 
 \subsection{Example: Hamiltonian Picture}
-Let's work out all the calculation for the specific case: Hamiltonian dynamics.\\
-Consider the following trivializing coordinates on the multiphase space:
+Let us work out all the calculation for the specific case: Hamiltonian dynamics.\\
+Consider the following trivializing coordinates chart on the multiphase space:
 \begin{displaymath}
 	\LinDualJet \rightsquigarrow (x^\mu, q^A, p^\mu_A)
 \end{displaymath}
@@ -606,7 +620,7 @@ Dynamics is encoded into the Hamiltonian density $H$:
 	\left(x^\mu, q^A, p^\mu_A, - H( x^\mu, q^A, p^\mu_A) \: \diff^m x \right)
 \end{displaymath}
 %
-The De Donder - Weyl forms are obtained by the tautological form on $\AffDualJet \rightsquigarrow (x^\mu, q^A, p^\mu_A, p)$
+De Donder-Weyl forms are obtained from the tautological form on $\AffDualJet \rightsquigarrow (x^\mu, q^A, p^\mu_A, p)$
 \begin{displaymath}
 	\theta = p^\mu_A \diff q^A \wedge \diff^m x_\mu + p \diff^m x
 \end{displaymath}
@@ -653,9 +667,10 @@ Considering then a variation of sections $(\varphi_\lambda, \pi_\lambda)$ and de
 	\eval{ \dfrac{\partial}{\partial \lambda} \pi_\lambda }_{ \lambda=0} =
 	\delta \pi^i \partial_i
 \end{displaymath}
-can be explicitly compute the directional derivative of the map
+can be explicitly computed the directional derivative of the map
 \begin{align*}
-	\eval{ \dfrac{\partial}{\partial \lambda} \mathcal{D}_\Hamiltonian \left( j^1 (\varphi, \pi) \right)}_{ \lambda=0} = &
+	\hat{\left[\eval{ \dfrac{\partial}{\partial \lambda} \mathcal{D}_\Hamiltonian \left( j^1 (\varphi, \pi) \right)}_{ \lambda=0} \right]}
+	= &
 	\delta \varphi^A \, \dfrac{\partial}{\partial q^A} + 
 	\delta \pi^\mu_A \dfrac{\partial}{\partial p^\mu_A} + \\
 	& + \left( 
@@ -740,6 +755,11 @@ thus proving the closedness of the symplectic current.
 \bibliography{main}
 \begin{thebibliography}{9}
 
+\bibitem{forgeromero}
+Forger, M.,  Romero, S. V. (2005). Covariant Poisson brackets in geometric field theory. 
+Communications in Mathematical Physics, 256(2), 375–410. 
+https://doi.org/10.1007/s00220-005-1287-8
+
 \bibitem{Gimmsy}
 	Gotay, M. J., Isenberg, J., Marsden, J. E., Montgomery,	R. (1998). 
 	Momentum Maps and Classical Relativistic
@@ -747,10 +767,15 @@ thus proving the closedness of the symplectic current.
 	Retrieved from http://arxiv.org/abs/physics/9801019
 
 \bibitem{primer}
-Benini, M., Dappiaggi, C., Hack, T.-P. (2013). Quantum Field Theory on Curved Backgrounds — a Primer. International Journal of Modern Physics A, 28(17), 1330023. https://doi.org/10.1142/S0217751X13300238
+Benini, M., Dappiaggi, C., Hack, T.-P. (2013). Quantum Field Theory on Curved Backgrounds — a Primer. 
+International Journal of Modern Physics A, 28(17), 1330023. 
+https://doi.org/10.1142/S0217751X13300238
 
-\bibitem{forgeromero}
-Forger, M.,  Romero, S. V. (2005). Covariant poisson brackets in geometric field theory. Communications in Mathematical Physics, 256(2), 375–410. https://doi.org/10.1007/s00220-005-1287-8
+
+
+\bibitem{Ban}
+Ban, E., Crainic, M. (2009). Analysis on Manifolds.
+https://www.staff.science.uu.nl/~ban00101/anman2009/anman2009.html
 
 \end{thebibliography}
 

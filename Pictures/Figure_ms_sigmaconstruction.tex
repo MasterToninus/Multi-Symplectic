@@ -82,6 +82,10 @@
 	\draw[lagmap]	([xshift=+0.5cm] E_block.north) -- node {$0$}	([xshift=+0.5cm] W_block.south);    
 	\draw[lagmap]	([xshift=+0.5cm] TE_block.north) -- node {$T 0$}	([xshift=+0.5cm] TW_block.south);   	
 	\draw[lagmap]	(pbTW_block) -- node {$T \pi$}	(TW_block);   
-
+	
+	% Legend
+	\node (legend) [draw,right=of M_block,align=left,xshift=1cm] {
+								$\longrightarrow$  : Bundle projection%\\
+    };  
   \end{tikzpicture}
 \end{document}
