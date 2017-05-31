@@ -1,0 +1,172 @@
+\documentclass[border=10pt, tikz]{standalone}
+\usepackage{tikz}
+\usepackage[multisym, geomec, basic, diffgeo]{../Math-Symbols-List/toninus-math-symbols}
+\usetikzlibrary{patterns,calc,arrows.meta}
+
+
+\tikzset{%
+  % Specifications for style of arrows:
+   M/.style={
+           -,
+           red,},
+   F/.style={
+           -,
+           blue,},
+   W/.style={
+           -,
+           green,},
+   O/.style={
+           -,
+           gray,},
+   hidden/.style={
+   			dashed,},                            
+  font={\fontsize{18pt}{12}\selectfont},
+}
+
+
+
+\begin{document}
+
+\begin{tikzpicture}[scale=2, thick]
+
+	%M Manifold
+	
+	\node (M1) at (0,0) {};
+	\node[pin=300:$M$] (M2) at ($(M1)+(2,0)$) {};
+	\node (M3) at ($(M2)+(2,0)$) {};
+	\draw[black,line width=2pt] (M1.center) .. controls ($(M1)+(0.75,1)$)  and ($(M2)+(-0.75,-1)$) .. (M2.center)
+	.. controls ($(M2)+(0.75,1)$)  and ($(M3)+(-0.75,-1)$) .. (M3.center);
+	
+	
+	%E Manifold
+	\node[pin=240:$E$] (E1) at ($(M1)+(0,3)$)  {};
+	
+	\draw[black,line width=2pt] (E1.center) -- ($(E1)+(4,0)$.center) --
+				 ($(E1)+(4,3)$.center) -- ($(E1)+(0,3)$.center) --
+				 (E1.center);
+				 
+	%JE Manifold
+	\node (JE1) at ($(E1)+(-3,5)$)  {};
+	\node[red,pin=150:$J^1E$] at  ($(JE1)+(0,1)$)  {};
+	\draw[red,line width=2pt] (JE1.center) -- ($(JE1)+(4,0)$.center) --
+				 ($(JE1)+(4,3)$.center) -- ($(JE1)+(0,3)$.center) --
+				 (JE1.center);
+
+	%J*E Manifold
+	\node (JdualE1) at ($(JE1)+(6,0)$)  {};
+	\node[blue,pin=30:$\vec{J}^{1\TwistedLinear}E$] at  ($(JdualE1)+(4,1)$)  {};
+	\draw[blue,line width=2pt] (JdualE1.center) -- ($(JdualE1)+(4,0)$.center) --
+				 ($(JdualE1)+(4,3)$.center) -- ($(JdualE1)+(0,3)$.center) --
+				 (JdualE1.center);
+				 
+	%Sections
+		\node (f1) at ($(E1)+(0,1.5)$) {};
+		\node[pin=90:$\varphi(M)$] (f2) at ($(f1)+(2,0)$) {};
+		\node (f3) at ($(f2)+(2,0)$) {};
+		\draw[black,line width=1pt] (f1.center) .. controls ($(f1)+(0.75,1)$)  and ($(f2)+(-0.75,-1)$) .. (f2.center)
+		\foreach \p in {0,1,...,7}{
+      		node[pos=\p/7,anchor=center]
+      			(fvarA1 \p){}
+  		}
+		.. controls ($(f2)+(0.75,1)$)  and ($(f3)+(-0.75,-1)$) .. (f3.center)
+		\foreach \p in {0,1,...,7}{
+					node[pos=\p/7,anchor=center]
+      			(fvarA2 \p){}
+  		}		
+		;
+
+		\node (j1) at ($(JE1)+(0,1.5)$) {};
+		\node[pin=90:$j^1 \varphi (M)$] (j2) at ($(j1)+(2,0)$) {};
+		\node (j3) at ($(j2)+(2,0)$) {};
+		\draw[black,line width=1pt] (j1.center) .. controls ($(j1)+(0.75,1)$)  and ($(j2)+(-0.75,-1)$) .. (j2.center)
+			\foreach \p in {0,1,...,7}{
+      		node[pos=\p/7,anchor=center]
+      			(jfvarA1 \p){}
+  		}
+		.. controls ($(j2)+(0.75,1)$)  and ($(j3)+(-0.75,-1)$) .. (j3.center)
+			\foreach \p in {0,1,...,7}{
+      		node[pos=\p/7,anchor=center]
+      			(jfvarA2 \p){}
+  		}		
+		;
+	
+		\node (p1) at ($(JdualE1)+(0,1.5)$) {};
+		\node[pin=110:{$(\varphi ,\pi)$}] (p2) at ($(p1)+(2,0)$) {};
+		\node (p3) at ($(p2)+(2,0)$) {};
+		\draw[black,line width=1pt] (p1.center) .. controls ($(p1)+(0.75,1)$)  and ($(p2)+(-0.75,-1)$) .. (p2.center)
+			\foreach \p in {0,1,...,7}{
+      		node[pos=\p/7,anchor=center]
+      			(pvarA1 \p){}
+  		}
+		.. controls ($(p2)+(0.75,1)$)  and ($(p3)+(-0.75,-1)$) .. (p3.center)
+			\foreach \p in {0,1,...,7}{
+      		node[pos=\p/7,anchor=center]
+      			(pvarA2 \p){}
+  		}
+		;				 
+
+	% Variated Section point
+		\foreach \p in {1,...,6}{
+      \node[anchor=center]
+      		(fvarB1 \p) 
+      		at ($(fvarA1 \p) + (0,{sin(\p*(180/7))})$){};
+      \node[anchor=center]
+      		(fvarB2 \p) 
+      		at ($(fvarA2 \p) + (0,-{sin(\p*(180/7))})$){};
+      \node[anchor=center]
+      		(jfvarB1 \p) 
+      		at ($(jfvarA1 \p) + (0,{sin(\p*(180/7))})$){};
+      \node[anchor=center]
+      		(jfvarB2 \p) 
+      		at ($(jfvarA2 \p) + (0,-{sin(\p*(180/7))})$){};
+      \node[anchor=center]
+      		(pvarB1 \p) 
+      		at ($(pvarA1 \p) + (0,-{sin(\p*(180/7))})$){};
+      \node[anchor=center]
+      		(pvarB2 \p) 
+      		at ($(pvarA2 \p) + (0,+{sin(\p*(180/7))})$){};
+  		}
+		\node[above,green] at (fvarB1 4) {$\delta\varphi_1$};  
+		\node[below,olive] at (fvarB2 3) {$\delta\varphi_2$};  			\node[above,green] at (jfvarB1 3) 
+													{$j^1\delta\varphi_1$};  
+		\node[below,olive] at (jfvarB2 3) 
+													{$j^1\delta\varphi_2$}; 	
+		\node[below,green] at (pvarB1 4) 
+														{$(\delta\varphi_1,\pi_2)$};  
+		\node[above,olive] at (pvarB2 3) 
+														{$(\delta\varphi_2,\pi_2)$};  
+  	
+	% Variations fields
+		\foreach \p in {1,...,6}{
+      		\draw[->,green]	(fvarA1 \p) -- (fvarB1 \p){};
+      		\draw[->,olive]	(fvarA2 \p) -- (fvarB2 \p){};
+      		\draw[->,green]	(jfvarA1 \p) -- (jfvarB1 \p){};
+      		\draw[->,olive]	(jfvarA2 \p) -- (jfvarB2 \p){};
+      		\draw[->,green]	(pvarA1 \p) -- (pvarB1 \p){};
+      		\draw[->,olive]	(pvarA2 \p) -- (pvarB2 \p){};
+  		}		
+
+% Arrows
+	%Projections
+		\draw[-Stealth] ($(E1)+(1.25,0)$) -- ($(M1)+(1.25,0) $);
+		\draw[-Stealth] ($(JE1)+(2,0)$) -- ($(E1)+(1.25,3) $);
+		\draw[-Stealth] ($(JdualE1)+(2,0)$) -- ($(E1)+(2.75,3) $);
+
+	% Forms
+		\draw[{Rays[n=6]}-Bracket,magenta] ($(JE1)+(2,2.5)$) --  
+			node [left] {$\theta_\Lagrangian$} 
+			($(JE1)+(2,4)$) ;
+		\draw[{Rays[n=6]}-Bracket,cyan] ($(JdualE1)+(2,2.5)$) -- 
+			node [right] {$\theta_\Hamiltonian$}
+			($(JdualE1)+(2,4)$);	
+
+	% Sections
+		\draw[-Stealth,orange] ($(M1)+(2.75,0.5) $) edge[bend right=20] node [right] {$\varphi$} ($(E1)+(2.75,0) $);
+		\draw[-Stealth,orange] ($(M1)+(-0.25,0.25) $) edge[bend left=60] node [left] {$j^1\varphi$} ($(JE1)+(2,1)$) ;
+		\draw[-Stealth,orange] ($(M3)+(0.25,0.25) $) edge[bend right=60] node [right] {$(\varphi, \pi)$} ($(JdualE1)+(2,1)$);	
+						 
+				 
+\end{tikzpicture}
+
+\end{document}
+

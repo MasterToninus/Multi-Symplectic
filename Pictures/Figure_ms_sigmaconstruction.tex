@@ -5,11 +5,11 @@
 \usepackage{tikz}
 
 
-\usetikzlibrary{arrows,positioning}
+\usetikzlibrary{arrows.meta,positioning}
 \tikzset{%
   % Specifications for style of arrows:
    projection/.style={
-           ->,
+           -Stealth,
            shorten <=1pt,
            shorten >=1pt,},
    lagmap/.style={
@@ -56,7 +56,7 @@
     every node/.style={fill=white, font=\sffamily}, align=center]
 
   % Specification of nodes (position, etc.)
-  \node (M_block)	[base]	{M};
+  \node (M_block)	[base,yshift=5cm]	{M};
   \node (E_block)	[manifold, above of= M_block]	{E};
   \node (W_block)	[manifold, above of= E_block]	{$W$};
   \node (TE_block)	[tangent, right of= E_block, , xshift=0.4cm , label={[label distance=-0.775cm]90:$TE$}]	{};
@@ -84,7 +84,7 @@
 	\draw[lagmap]	(pbTW_block) -- node {$T \pi$}	(TW_block);   
 	
 	% Legend
-	\node (legend) [draw,right=of M_block,align=left,xshift=1cm] {
+	\node (legend) [draw,right=of M_block,align=left,xshift=3cm] {
 								$\longrightarrow$  : Bundle projection%\\
     };  
   \end{tikzpicture}

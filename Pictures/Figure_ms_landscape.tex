@@ -3,7 +3,7 @@
 
 \documentclass[border=10pt, tikz]{standalone}
 \usepackage{tikz}
-\usepackage[multisym]{../Math-Symbols-List/toninus-math-symbols}
+\usepackage[multisym, geomec, basic, diffgeo]{../Math-Symbols-List/toninus-math-symbols}
 
 \usetikzlibrary{arrows,positioning}
 \tikzset{%
@@ -13,10 +13,10 @@
            shorten <=1pt,
            shorten >=1pt,},
    lagmap/.style={
-           projection,
+           -latex,
            red},
    hammap/.style={
-           projection,
+           -latex,
            blue},
    inclusion/.style={
    		   left hook->,
@@ -79,7 +79,7 @@
  
   % Dynamics Map
 	\draw[lagmap]	(J1E_block) -- node {$\mathcal{L}$}	(volM_block);      
-	\draw[lagmap,bend left,->]	(J2E_block.west) -| node[above,anchor= east] {$D_\mathcal{L}$} 	(dualVE_block.north);   
+	\draw[lagmap,bend left]	(J2E_block.west) -| node[above,anchor= east] {$D_\mathcal{L}$} 	(dualVE_block.north);   
 	\draw[lagmap]	(J1E_block.east) -- node {$\mathbb{F}\mathcal{L}$}	(affdualJ1E_block.west);   
 	\draw[hammap]	([xshift=+0.25cm] lindualJ1E_block.south) -- node {$\mathcal{H}$}	([xshift=+0.25cm] affdualJ1E_block.north);      
 	\draw[bend left,hammap]	(J1lindualJ1E_block.east) -| node[above,anchor= west] {$D_\mathcal{H}$}	(duallindualJ1E_block.north); 
