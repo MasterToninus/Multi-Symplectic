@@ -1,0 +1,57 @@
+\documentclass[border=10pt, tikz]{standalone}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+
+%Funzione 3D
+\pgfmathdeclarefunction{F}{2}{\pgfmathparse{exp(-(#1^2+#2^2))}}
+%{\pgfmathparse{3000-1000*sin(#1)+1500*(#2/6)^5}}
+%*(#2/6)^3
+
+%Common symbols
+\usepackage[multisym, geomec, basic, diffgeo]{../Math-Symbols-List/toninus-math-symbols}
+
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[axis lines=none,clip=false,view={30}{45},]
+
+	%Spazio Delle Configurazioni Cinematiche
+	\addplot3[ domain=-1:1,y domain=-1:1,
+					 colormap/greenyellow, opacity=0.1,fill opacity=0.5,
+					 surf,    
+					 ]
+	{F(x,y)};
+
+
+
+	%Phi0$
+	\node[pin={135:{ $\phi$}},circle,fill,inner sep=1pt] at (axis cs:0,0,{F(0,0)}) {};
+  	\node[pin={-30:{$\Conf = \Gamma^\infty(F,M)$}}]  at (axis cs:0.9,0,{F(0.9,0)}) {};
+   	\node[pin={[blue]80:{$ T_\phi\Conf \subseteq  \Gamma^\infty\left( \phi^\ast (VF) \right)$}}] at (axis cs:-0.2,0.8,1) {};
+
+	% Curve parametrizzate sulla superficie (le spezzo a metà così riesco a mettere bene il vettore tangente
+		\addplot3[red,opacity=0.5,domain=0:2,variable=\t,samples y=0] ({-1+t},{-1+t},{F(-1+t,-1+t)})
+			node[pin={30:{$\Sol= \ker(D[\;])$}}]{};
+
+	% Tangent conf
+	  \draw[blue,fill=blue!5,opacity=.50] (0.9,-0.9,1) -- (0.9,0.9,1) -- (-0.9,0.9,1) -- (-0.9,-0.9,1) -- cycle;
+	
+	%Tangent Sol
+		\draw[orange] (-0.9,-0.9,1) -- (0.9,0.9,1) node[pin={30:{$T_{\phi}\Sol = \ker(J_\phi[\;])$}}]{};
+
+
+	\node(target) [rectangle, rounded corners, draw=black,fill=gray!5,
+                  text centered,
+                  minimum width=5cm, minimum height=1cm,] 
+                  at (0,0,3){$\Gamma^\infty ( V^\TwistedLinear F)$};
+
+
+  	
+  	\draw[->]	(-1,-0.6,{F(-1,-0.6)}) edge[bend left=70] node [left] {$D [\;]$} (target.west);
+  	\draw[->,blue]	(-0.9,-0.5,1) edge[bend left=30] node [ left] {$J_\phi [\;]$} (target.south west);
+
+\end{axis}
+\end{tikzpicture}
+\end{document}
