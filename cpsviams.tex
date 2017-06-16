@@ -183,7 +183,7 @@ The key point of the latter definition is that the \emph{Euler-Lagrange} map and
 	D_\Hamiltonian \circ j^1 : \quad \Gamma^\infty(F) \ni (\varphi,\pi) \quad \mapsto \quad D_\Hamiltonian[ (\varphi,\pi) ] \in \Gamma^\infty \left( (\varphi,\pi)^\ast \left(V^\TwistedLinear F \right)\right)
 \end{align*}
 %
-The target base is a vector space, more precisely a Frechet space \cite[Cap.2]{Ban} and it makes sense to ask whether $D_\cdot [\phi]$ is equal to the 0-section.
+The target base is a vector space, more precisely a Frechet space \cite[Cap.2]{Ban}, and it makes sense to ask whether $D_\cdot [\phi]$ is equal to the 0-section.
 
 Again, we employ a collective notation to denote the motion equation operators $D_\Lagrangian$ and $D_\Hamiltonian$:
 %
@@ -297,16 +297,21 @@ Everything can be encoded in the following operator:
 		\end{displaymath}
 	\end{remark}
 %
-  \begin{minipage}[r]{0.80\textwidth}
-  	\includestandalone[width=0.85\textwidth]{Pictures/Figure_Jacobi}
-    %\includegraphics[width=0.85\textwidth]{Pictures/Jacobi.png}
-  \end{minipage}\hfill
-  \begin{minipage}[l]{0.20\textwidth}
-	Note that $ \left(J(\phi)\right) [ \; ]$ and $D[\;]$ maps to the same space.
-  \end{minipage}
+	Note that $D[ \phi]$  and $ \left(J(\phi)\right) [ \delta \phi ]$  $(\forall \delta\phi \in T_\phi\Conf)$ are vectors in the same vector space.
+	%
+	Considering the "formal" infinite dimensional vector bundle 
+	\begin{displaymath}
+		\mathcal{E} =\bigsqcup_{\phi \in \Conf} 
+			\Gamma^\infty \left( 
+				\phi^\ast(V^\TwistedLinear F)
+			\right)
+			\rightarrow \Conf
+	\end{displaymath}
+	$D$ could be regarded as a section on it and $J$ as a bundle map from $T\Conf$ to $V\mathcal{E}\simeq \mathcal{E}$.
+	\begin{center}
+	  	\includestandalone[width=0.85\textwidth]{Pictures/Figure_Jacobi}
+	\end{center}
 
-
-\vspace{5mm}
 Since $D[\phi_\lambda](x)$ is a smooth curve on $ V^\TwistedLinear F $, that is also vertical w.r.t. $M$, 
 the derivative involved has to be intended as the tangent velocity vector,
 thus $\dfrac{\diff}{\diff \lambda} D [\phi_\lambda]$ is the vertical vector field associated to the infinitesimal variation.\\
@@ -316,7 +321,7 @@ Exactly as noted for the tangent vector of $\Conf$, we have for any $x\in M$:
 			\quad \Rightarrow \quad
 			\left.\dfrac{\diff}{\diff \lambda} D [\phi_\lambda]\right\rvert_{\lambda=0} \in D[\phi]^\ast \left( V_M \left( V^\TwistedLinear \right)\right)
 		\end{displaymath}
-		because $D[\phi_\lambda]$ can be regarded as a section of $V^\TwistedLinear F$ over $M$.
+		because $D[\phi_\lambda]$ can be regarded as a section of $V^\TwistedLinear F$ over $M$.\\
 		Hence the latter definition does not depend from the particular choice of variation $\phi_\lambda$ 
 		but only from its infinitesimal generator $\delta\phi$.
 
@@ -332,8 +337,8 @@ the action of $\sigma$ is legit and operator $J$ results well-defined.
 \begin{lemma}\label{Prop:JacobieLie}
 	The Jacobi operator $\left(J(\phi) \right) [\delta \phi]$
 	around a solution $\phi$ when acting on an infinitesimal variation $\delta \phi \in T_\phi \Conf$
-	via a twisted form that can be evaluated on any $V \in \Gamma\left(V F \right)$
-	yields the following expression:
+	gives a twisted form that can be evaluated on any $V \in \Gamma\left(V F \right)$
+	yielding the following expression:
 	\begin{displaymath}	
 		\left\langle \left(J(\phi) \right) [\delta \phi] \right\vert
 		\left. V \right\rangle =
@@ -432,13 +437,13 @@ We have the following short exact sequence of bundle morphisms over $W$:
 	\end{center}
 inasmuch as
 %
-\begin{eqnarray*}
-	\ker(i) = 0 (E) = i' \left( 0 \right)
-	\ker\left( T \pi_{E,W} \right) = V_E W = i\left( V_E W \right)
-	\ker\left(T \pi_{M,E}\right) = V_M E = T \pi_{E,W} \left( V_M W \right)
-\end{eqnarray*}
+\begin{align*}
+	&\ker(i) = 0 (E) = i' \left( 0 \right) \\
+	&\ker\left( T \pi_{E,W} \right) = V_E W = i\left( V_E W \right) \\
+	&\ker\left(T \pi_{M,E}\right) = V_M E = T \pi_{E,W} \left( V_M W \right) \\
+\end{align*}
 
-
+%
 We can exhibit a right splitting, that is:
 \begin{displaymath}
 	u : C \rightarrow B \quad \textrm{s.t.} \quad u \circ T \pi_{E,W} = \textrm{id}_B
@@ -461,7 +466,7 @@ In fact, since $0 \in \Gamma (W,E)$, we have:
 	V \qquad \forall V \in \left( V_M W \right)_\omega ,\; \omega \in \pi^-1(e)
 \end{displaymath}
 Therefore, we have the following decomposition:
-
+%
 \begin{displaymath}
 	\left( V_M W \right)_{0(e)} = 
 	i\left[ V_E W \right]_{0(e)} \oplus \left( T_e 0 \left[ V_e E\right] \right)
@@ -742,7 +747,7 @@ In the case that $(\delta \varphi_i, \delta \pi_i) \in T_{(\varphi,\pi)}\Sol$ we
 	\right) ( \delta \varphi_2)^A \\
 	&=0
 \end{align*}
-thus proving the closure of the symplectic current.
+thus the closure of the symplectic current is verified.
 
 
 
