@@ -1,0 +1,82 @@
+\title{(An introduction to )MultiSymplectic Geometry and Classical Field systems}
+\author{
+	International Ph.D. Program in "Science" \\
+	"Differential geometry and applications to modern physics" \\
+	Department of Mathematics and Physics\\
+	Universit\'a Cattolica del Sacro Cuore\\
+	via Musei 41, 25121 Brescia, \underline{Italy}
+}
+
+\documentclass[a4paper,12pt,fleqn]{scrartcl}  %Per La Stampa
+\usepackage[a4paper, margin=2cm]{geometry}
+
+\usepackage{amsmath}
+\usepackage[multisym, geomec, basic, diffgeo]{./Math-Symbols-List/toninus-math-symbols}
+\usepackage[subpreambles=true]{standalone}
+\usepackage{commath}
+
+\usepackage[italian,english]{babel}
+\usepackage[utf8]{inputenc}
+
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+%\usepackage{Latex-Theorem/theoremtemplate}
+
+%	\renewcommand{\AffDualJet}{ J^{1 \TwistedAffine}E }
+%	\renewcommand{\LinDualJet}{ \overrightarrow{J^{1 \TwistedLinear}E} }
+
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+$n$-plectic structures (also called \emph{multisymplectic}) are a rather straightforward generalization of symplectic ones where closed non-degenerate $n+1$-forms take the place of  $2$-forms.
+\\
+As the same way as one can relate a symplectic manifold to any ordinary classical mechanical system (e.g. a single point-like particle constrained to some manifold), it is possible to associate a multisymplectic manifold to any classical field systems (think them as a continuum medium as a filament or a membrane).
+\\
+The aim of my talk is to give an account on the multisymplectic framework for (I-order) classical fields theories comparing it with another object that plays a significant role in the mathematical description of classical fields called \emph{Covariant phase space}.
+\\
+Being the latter a sort of "$\infty$-dimensional manifold" (namely a mapping space), we will from this picture the idea that multisymplectic geometry could be seen as a tool that allow us to treat such formal object in a finite dimensional setting.
+
+
+\end{abstract}
+
+%------------------------------------------------------------------------------------------------
+% Bibliography (BibTex)
+% https://arxiv.org/hypertex/bibstyles/
+%------------------------------------------------------------------------------------------------
+			\nocite{*}
+			\bibliographystyle{ieeetr}
+			\bibliography{biblio}
+%------------------------------------------------------------------------------------------------
+
+\subsection{Far capire cosa intendo per campo classico}
+Classicamente: DOF come numero di misure necessarie per fissare univocamente una configurazione.
+\begin{table}[]
+\begin{tabular}{lll}
+	System & Configuration space (locally) & protoype 
+ 	\\
+	Ordinary system & $\mathbb{R}^n$ with $n\in \mathbb{N} = Hom_{set}(\{1,\ldots n\}, \mathbb{R})$ & A point on a $n$-dimensional mfd.
+	\\
+	1 dimensional field & $\mathbb{R}^\mathbb{R} = C^\infty(\mathbb{R},\mathbb{R})$ & collection of points on a line each one parametrized by ...
+	\\
+	n dimensional field & $(\mathbb{R}^m)^{\mathbb{R}^n} = C^\infty (\mathbb{R}^n, \mathbb{R}^m)$ & ...
+\end{tabular}
+\end{table}
+
+\subsection{spunti Open problems}
+	We have a momap on ms mfd and a momap on mapping space (as diffeological space) does the two match?
+	
+	We have a canonical m-s structure on J.. and a canonical poisson structure con cov phase space (Peierls bracket) does the two match?
+
+\section{Spunti dei Saggi}
+\subsection{Rogers: arXiv:1009.2975v3}
+Multisymplectic manifolds naturally arise in certain covariant Hamiltonian formalisms for classical field theory.
+In these formalisms, one describes a $(n+1)$-dimensional field theory by using a finite-dimensional $n$-plectic manifold as a \emph{multi-phase space} instead of an infinite-dimensional phase space. 
+The $n$-plectic form can be used to define a system of partial differential equations which are the analogue of Hamilton's equations in classical mechanics. 
+The solutions to these
+equations correspond to particular submanifolds of the multi-phase space that encode the value of the field at each point in space-time as well as the values of its time and spatial derivatives.
+
+
+\end{document}
