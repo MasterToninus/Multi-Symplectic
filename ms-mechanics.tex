@@ -7,8 +7,8 @@
 	via Musei 41, 25121 Brescia, \underline{Italy}
 }
 
-\documentclass[a4paper,12pt,fleqn]{scrartcl}  %Per La Stampa
-\usepackage[a4paper, margin=2cm]{geometry}
+\documentclass[a4paper,12pt,fleqn]{article}  %Per La Stampa
+\usepackage[a4paper, margin=3cm]{geometry}
 
 \usepackage{amsmath}
 \usepackage[multisym, geomec, basic, diffgeo]{./Math-Symbols-List/toninus-math-symbols}
@@ -26,18 +26,41 @@
 %	\renewcommand{\AffDualJet}{ J^{1 \TwistedAffine}E }
 %	\renewcommand{\LinDualJet}{ \overrightarrow{J^{1 \TwistedLinear}E} }
 
+\providecommand{\oast}{\ensuremath{\:\!%
+ {\raisebox{0.1ex}{$\scriptscriptstyle \bigcirc$} \hspace{-0.5em} \ast}}}
+\providecommand{\ostar}{\ensuremath{\:\!%
+ {\raisebox{0.05ex}{$\scriptscriptstyle \bigcirc$} \hspace{-0.5em} \star}}}
+\providecommand{\smoast}{\ensuremath{%
+ {\raisebox{-0.25ex}{$\textstyle \circ$} \hspace{-0.42em}
+ {\scriptscriptstyle \ast}}}}
+\providecommand{\smostar}{\ensuremath{%
+ {\raisebox{-0.25ex}{$\textstyle \circ$} \hspace{-0.42em}
+  \raisebox{0.05ex}{$\scriptscriptstyle \star$}}}}
 
 \begin{document}
 \maketitle
 
+$$
+\ast 
+\star 
+\oast 
+\ostar
+\smoast
+\smostar
+J^\smostar
+J^\smoast
+J^\ostar
+$$
+
+
 \begin{abstract}
 $n$-plectic structures (also called \emph{multisymplectic}) are a rather straightforward generalization of symplectic ones where closed non-degenerate $n+1$-forms take the place of  $2$-forms.
 \\
-As the same way as one can relate a symplectic manifold to any ordinary classical mechanical system (e.g. a single point-like particle constrained to some manifold), it is possible to associate a multisymplectic manifold to any classical field systems (think them as a continuum medium as a filament or a membrane).
+As the same way as one can relate a symplectic manifold to any ordinary classical mechanical system (e.g. a single point-like particle constrained to some manifold), it is possible to associate a multisymplectic manifold to any classical field systems (think them as a continuum medium like a filament or a membrane).
 \\
 The aim of my talk is to give an account on the multisymplectic framework for (I-order) classical fields theories comparing it with another object that plays a significant role in the mathematical description of classical fields called \emph{Covariant phase space}.
 \\
-Being the latter a sort of "$\infty$-dimensional manifold" (namely a mapping space), we will from this picture the idea that multisymplectic geometry could be seen as a tool that allow us to treat such formal object in a finite dimensional setting.
+Being the latter a sort of "$\infty$-dimensional manifold" (namely a mapping space), we will draw from this picture the idea that multisymplectic geometry could be seen as a tool that allow us to treat such formal object in a finite dimensional setting.
 
 
 \end{abstract}
@@ -51,7 +74,15 @@ Being the latter a sort of "$\infty$-dimensional manifold" (namely a mapping spa
 			\bibliography{biblio}
 %------------------------------------------------------------------------------------------------
 
-\subsection{Far capire cosa intendo per campo classico}
+\section{A glance at the geometric approach to classical mechanics}
+Recall: Geometric Mechanics of Classical system
+Configuration space
+Generalized velocities space and phase space
+...
+
+
+
+\section{Far capire cosa intendo per campo classico}
 Classicamente: DOF come numero di misure necessarie per fissare univocamente una configurazione.
 \begin{table}[]
 \begin{tabular}{lll}
@@ -65,10 +96,39 @@ Classicamente: DOF come numero di misure necessarie per fissare univocamente una
 \end{tabular}
 \end{table}
 
-\subsection{spunti Open problems}
-	We have a momap on ms mfd and a momap on mapping space (as diffeological space) does the two match?
+A questo punto si dovrebbe Essere chiaro il punto di partenza:
+\\
+
+\section{Kinematics of Classical fields}
+The starting point is the \emph{configuration bundle} 
+ 	\begin{displaymath}
+ 		E = \left( \pi_{M,E} : E\rightarrow M \right)
+ 	\end{displaymath}
+is a smooth bundle encoding the kinematics.
+
+\subsection{Jet Bundle}
+The first jet bundle of $E$ generalises the space of generalized velocities.
+
+The fiber over a point $y\in E$ is
+\begin{displaymath}
+	\left( J^1 E\right)_y = \left\lbrace \gamma \in \text{L}(T_{\pi(y)}M, T_y E) \; \vert \: T\pi \circ \gamma = \text{id}_{T_{\pi(x)} M} \right\rbrace
+\end{displaymath}
+(T = Tangent functor L = space of linear maps)
+
+which is and affine subspace of $\text{L}(T_{\pi(y)}M, T_y E)$ modelled on the following (difference) vector space:
+\begin{displaymath}
+	\vec{\left( J^1 E\right)_y} = \left\lbrace z \in \text{L}(T_{\pi(y)}M, T_y E) \; \vert \: T\pi \circ z = 0 \right\rbrace
+	\cong text{L}(T_{\pi(y)}M, T_y E)
+\end{displaymath}
+
+\section{Spunti / Open problems}
+\begin{itemize}
+	\item We have a momap on ms mfd and a momap on mapping space (as diffeological space) does the two match?
+	\item We have a canonical m-s structure on J.. and a canonical poisson structure con cov phase space (Peierls bracket) does the two match?
+	\item there are other notion of moment map on the multisymplectic setting. For instance how the definition in section 4 of \cite{Gotay1998a} is related to the one in \cite{Ryvkin2018}?
+\end{itemize}
 	
-	We have a canonical m-s structure on J.. and a canonical poisson structure con cov phase space (Peierls bracket) does the two match?
+	
 
 \section{Spunti dei Saggi}
 \subsection{Rogers: arXiv:1009.2975v3}
@@ -77,6 +137,166 @@ In these formalisms, one describes a $(n+1)$-dimensional field theory by using a
 The $n$-plectic form can be used to define a system of partial differential equations which are the analogue of Hamilton's equations in classical mechanics. 
 The solutions to these
 equations correspond to particular submanifolds of the multi-phase space that encode the value of the field at each point in space-time as well as the values of its time and spatial derivatives.
+
+\subsection{Forger-Romero}
+The two formalisms, although both fully covariant and directed towards
+the same ulti\-mate goal, are of different nature; each of them has its
+own merits and drawbacks.
+\begin{itemize}
+ \item The multisymplectic formalism is manifestly consistent with the
+       basic principles of field theory, preserving full covariance, and
+       it is mathematically rigorous because it uses well established
+       methods from calculus on finite-dimensional manifolds. On~the
+       other hand, it does not seem to permit any obvious definition
+       of the \mbox{Poisson} bracket between observables. Even the
+       question of what mathematical objects should represent physical
+       observables is not totally clear and has in fact been the subject
+       of much debate in the literature. Moreover, the introduction of
+       $n$ conjugate momenta for each coordinate obscures the usual
+       duality between canonically conjugate variables (such as momenta
+       and positions), which plays a fundamental role in all known methods
+       of quantization. A definite solution to these problems has yet to be
+       found.
+ \item The covariant functional formalism fits neatly into the philosophy
+       underlying the symplectic formalism in general; in particular, it
+       admits a natural definition of the Poisson bracket (due to Peierls
+       \cite{Pe} and further elaborated by DeWitt \cite{DW1,DW2,DW3})
+       \linebreak that preserves the duality between canonically conjugate
+       variables. Its main drawback is the lack of mathematical rigor, since
+       it is often restricted to the formal extrapolation of techniques from
+       ordinary calculus on manifolds to the infinite-dimensional setting:
+       transforming such formal results into mathematical theorems is a
+       separate problem, often highly complex and difficult.
+\end{itemize}
+
+Multiphase space (ordinary as well as extended) is the geometric environment
+built by appropriately patching together local coordinate systems of the form
+$(q^i,p\>\!_i^\mu)$~-- in- \linebreak stead of the canonically conjugate
+variables $(q^i,p_i)$ of mechanics~-- together with space-time coordinates
+$x^\mu$ and, in the extended version, a further energy type variable that
+we shall denote by $p$ (without any index). The global construction of
+these multiphase spaces, however, has only gradually come to light; it
+is based on the following mathematical concepts.
+\begin{itemize}
+ \item The collection of all fields in a given theory, defined over a fixed
+       ($n$-dimensional orientable) space-time manifold $M$, is represented
+       by the sections $\varphi$ of a given fiber bundle $E$ over $M$, with
+       bundle projection $\, \pi : E \rightarrow M \,$ and typical fiber $Q$.
+       This bundle will be referred to as the \emph{configuration bundle}
+       of the theory since $Q$ corresponds to the configuration space of
+       possible field values.
+ \item The collection of all fields together with their partial derivatives
+       up to a certain order, say order $r$, is represented by the $r$-jets
+       $\, j^{\,r\!} \varphi \equiv (\varphi,\partial\varphi,\ldots,
+       \partial^{\,r\!} \varphi)$  of sections of $E$, which are
+       themselves sections of the $r^{\mathrm{th}}$ order jet bundle
+       $J^r E$ of $E$, regarded as a fiber bundle over~$M$. In this paper,
+       we shall only need first order jet bundles, \linebreak with one
+       notable exception: the global formulation of the Euler\,-\,Lagrange
+       equations requires introducing the second order jet bundle.
+ \item Dualization -- the concept needed to pass from the Lagrangian to
+       the Hamiltonian framework via the Legendre transformation -- comes
+       in two variants, based on the fundamental observation that the first
+       order jet bundle $J^1 E$ of $E$ is an affine bundle over $E$ whose
+       difference vector bundle $\vec{J}^{\,1} E$ will be referred to as
+       the linear jet bundle. Ordinary multiphase space is obtained as
+       the twisted linear dual $\vec{J}^{\,1\oast} E$ of $\vec{J}^{\,1} E$
+       while extended multiphase space is obtained as the twisted affine
+       dual $J^{1\ostar} E$ of $J^1 E$, where the prefix ``twisted'' refers
+       to the necessity of taking an additional tensor product with the
+       bundle of $n$-forms on $M$.\footnote{We use an asterisk $\ast$ to
+       denote linear duals of vector spaces or bundles and a star $\star$
+       to denote affine duals of affine spaces or bundles. These symbols
+       are appropriately encircled to characterize twisted duals, as
+       opposed to the ordinary duals defined in terms of linear or
+       affine maps with values in $\mathbb{R}$.}
+ \item The Lagrangian $\mathcal{L}$ is a function on $J^1 E$ with values
+       in the bundle of $n$-forms on~$M$ so that it may be integrated to
+       provide an action functional which enters the variational principle.
+       The De Donder\,-\,Weyl Hamiltonian $\mathcal{H}$ is a section of
+       $J^{1\ostar} E$, considered as an affine line bundle over
+       $\vec{J}^{\,1\oast} E$.
+\end{itemize}
+Note that the formalism is set up so as to require no additional structure
+on the con\-figuration bundle or on any other bundle constructed from it:
+all are merely fiber bundles over the space-time manifold $M$. Of course,
+additional structures do arise when one is dealing with special classes
+of fields (matter fields and the metric tensor in general relativity are
+sections of vector bundles, connections are sections of affine bundles,
+nonlinear fields such as those arising in the sigma model are sections
+of trivial fiber bundles with a fixed Riemannian metric on the fibers,
+etc.), but such additional structures depend on the kind of theory
+considered and thus are not universal. Finally, the restriction
+imposed on the order of the jet bundles considered reflects the
+fact that almost all known examples of field theories are governed by
+second order partial differential equations which can be derived from a
+Lagrangian that depends only on the fields and their partial derivatives
+of first order, which is why it is reasonable to develop the general
+theory on the basis of a first order formalism, as is done in mechanics
+\cite{AM,Arn}.
+
+A fundamental prerequisite for setting up a general mathematical framework
+for geo\-metric field theory is to obtain a clear picture of what should be
+the most general concept of a (classical) field. In physics, we distinguish
+basically four different types of fields.
+\begin{itemize}
+ \item \emph{Matter fields} are fields that, in the context of quantum theory
+       and in particular of the standard model, are associated with particles
+       that constitute matter -- quarks and leptons.
+ \item \emph{Gauge fields} are fields that, in the context of quantum theory
+       and in particular of the standard model, are associated with particles
+       that mediate three of the four fundamental interactions: the photon
+       $\gamma$ for the electromagnetic interaction, the three intermediate
+       vector bosons $W^\pm$ and $Z^0$ for the weak interaction and the
+       eight gluons for the strong interaction. Among the three, only
+       one -- the electromagnetic interaction -- describes a long-range
+       force and therefore plays an important role also in the macroscopic
+       world, where it is governed by Maxwell's theory of electromagnetism.
+ \item \emph{Gravitational fields} occupy a particular position because
+       according to general relativity as formulated by Einstein, they
+       are related to the metric properties of space-time itself.
+       Historically, general relativity has been the first example
+       of a geometric field theory.
+ \item \emph{Nonlinear fields} are fields taking values in some nonlinear
+       manifold, often obtained as a submanifold of some vector space.
+       Typical examples are the Heisenberg model (the continuum limit
+       of the Heisenberg spin chain) and the sigma model.
+\end{itemize}
+Obviously, a general mathematical formalism for classical field theory
+should be based on concepts capable of accomodating all these types of
+fields. This leads to the definition of a field as being a section of
+a (general) fiber bundle~$E$ over space-time~$M$, without additional
+structure, since different types of fields correspond to sections of
+different types of fiber bundles.
+\begin{itemize}
+ \item \emph{Matter fields} are sections of some given vector bundle over $M$,
+       built from the tangent bundle $TM$ of $M$ together with its descendants
+       (to accomodate the tensorial or spinorial character of these fields)
+       and possibly from vector bundles $V$ over $M$ associated to some
+       principal bundle $P$ over $M$ whose structure group describes
+       internal symmetries.
+ \item \emph{Gauge fields} are usually defined as connection forms on the
+       total space of some given principal bundle $P$ over $M$ but can be
+       reinterpreted as sections of the connection bundle of $P$ -- an
+       affine bundle $CP$ over $M$ constructed canonically from $P$.
+       See for example \cite{NODG}.
+ \item \emph{Gravitational fields} are traditionally described by a metric
+       tensor which, again, is a section of a vector bundle over $M$, namely
+       the symmetric second tensor power of the cotangent bundle $T^* M$ of
+       $M$, but subject to the condition of non-degeneracy and Lorentzian
+       signature which restricts it to take values in a certain open
+       subbundle of the latter.
+ \item \emph{Nonlinear fields} are usually sections of a globally trivial
+       bundle $\, E = M \times Q \,$ where $Q$ is a given manifold; such
+       sections can be identified with maps from $M$ to $Q$. In the most
+       general version of the sigma model, $Q$ is just a Riemannian manifold.
+\end{itemize}
+
+
+\nocite{*}
+\bibliographystyle{alpha}
+\bibliography{biblio}
+
 
 
 \end{document}
