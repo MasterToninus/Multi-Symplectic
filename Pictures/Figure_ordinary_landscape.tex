@@ -1,0 +1,31 @@
+\documentclass[border=10pt, tikz]{standalone}
+\usetikzlibrary{cd}
+\usetikzlibrary{arrows}
+\usetikzlibrary{shapes,positioning,intersections,quotes}
+\usepackage{amsfonts,amssymb}
+\usepackage{mathtools}
+\usepackage{adjustbox}
+
+
+\def\potatoid{
+	\adjustbox{scale=1}{%
+		\tikz[baseline=.2em,scale=0.5,]{
+			  \draw (-2,0) arc (180:360:2 and 0.6);
+			  \draw[dashed] (2,0) arc (0:180:2 and 0.6);
+			  \fill[fill=black] (0,0) circle (1pt);
+				%\node[above right=0pt of {(0,0)}] {$\gamma$};
+				\node [minimum width=3pt, inner sep=0pt, pin={[ outer sep=2pt]0:$\mathcal{C}$}] at (1.5,0) {};
+		}
+	}
+}
+
+
+\begin{document}
+\begin{tikzcd}[column sep=large]
+ 	\mathbb{R} & & \mathbb{R} \\
+ 	TQ \ar[rr,"\mathbb{F}L"] \ar[dr]\ar[u,mapsto,"L"]& & T^\ast Q \ar[dl] \ar[u,mapsto,"H"] \\
+ 	& Q & \\
+ 	\mathbb{R} & \ar[l,mapsto,"S"] \potatoid & \\
+ 	& \mathbb{R} \ar[uu,"\gamma"]&  
+\end{tikzcd}
+\end{document}

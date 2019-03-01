@@ -78,24 +78,57 @@ Being the latter a sort of "$\infty$-dimensional manifold" (namely a mapping spa
 
 \end{abstract}
 
-%------------------------------------------------------------------------------------------------
-% Bibliography (BibTex)
-% https://arxiv.org/hypertex/bibstyles/
-%------------------------------------------------------------------------------------------------
-			\nocite{*}
-			\bibliographystyle{ieeetr}
-			\bibliography{biblio}
-%------------------------------------------------------------------------------------------------
 
-\section{A glance at the geometric approach to classical mechanics}
-Recall: Geometric Mechanics of Classical system
-Configuration space
-Generalized velocities space and phase space
-...
+\section{Preliminiaries}
+
+%What's geometric Mechanics
+\subsection{A glance at the geometric approach to classical mechanics}
+The context in which we are going to work is \emph{Geometric Mechanics}.
+\\
+Roughly speaking, geometric mechanics is a branch of (applied) mathematics that employs differential geometry to the description of physical systems. Unlike analytical mechanics, the focus is on encoding the mechanical properties of a physical system regardless of the reference frame (coordinate system).
+\\
+Let us briefly recall what are the most important ingredients of an ordinary classical\footnote{Here "ordinary" stands for finite degrees of freedom and "classical" stands for non-quantum and non-relativistic.} system.
+
+\begin{center}
+  %\includestandalone{Pictures/Figure_ordinary_landscape}
+\end{center}
+
+\begin{itemize}
+	\item The starting point is the \emph{Configuration space}, that is a smooth manifolds $Q$ containing all possible spatial displacements of a system.\\
+	E.g. for the simple planar pendulum $Q= S^1$, for a double pendulum $Q =\mathbb{T}^2$
+	\item A point in $Q$ is a statical configuration, that is opposed to the elements of the \emph{space of kinematics configuration}
+	$$ \mathcal{C} = C^\infty(\mathbb{R},Q)$$
+	which is the collection of all trajectories admitted by the constraints.
+	\item The tangent bundle $TQ$ takes the name of \emph{space of generalized velocities}
+	\item The cotangent bundle $T^\ast Q$ is called \emph{phase space}. Such space carries a natural symplectic form $\omega$ (\emph{Poincare\'} 2-form) defined in term of the tautological 1-form $$\omega= \text{d} \theta$$
+\end{itemize}
+%
+All of this encode the geometry of the kinematics. Fixing a point in the previous two spaces is tantamount to give a complete set of initial data determining unambiguously the evolution of the system. 
+\\
+Such point carries more information that the simple spatial displacement and are interpreted as the \emph{physical state} of the system.
+%
+\begin{itemize}
+\item Dynamics is encoded by two smooth functions:
+	\\ 
+	$L:TQ\rightarrow \mathbb{R}$ in the \emph{Lagrangian} framework
+	\\
+	$H:T^\ast Q \rightarrow \mathbb{R}$ in the \emph{Hamiltonian} framework
+	\\
+	Generally the two framework are not equivalent.
+\item From the Lagrangian $L$ or the Hamiltonian $H$ one can obtain the so-called \emph{Action functional} $S:\mathcal{C}\rightarrow \mathbb{R}$ which yields the equation of motion through the d'Alambert principle.
+\end{itemize}
+%
+The goal of this talk is to describe the analogue of this framework in the case of classical field systems.
+
+%What's a Classical Field
+\subsection{Modelling a classical field theory}
+A classical field theory is a physical theory that predicts how "physical fields" evolves according to their interaction with the matter and themselves.
+\\
+The term "classical" is commonly reserved to theories treating electro-magnetism and gravitation. Here it is meant as non-quantum mechanics of physical fields or continuous systems.
+
+Roughly, a physical field can be thought as the assignment of a physical quantity at each point of space and time.
 
 
-
-\section{Far capire cosa intendo per campo classico}
 Classicamente: DOF come numero di misure necessarie per fissare univocamente una configurazione.
 \begin{table}[]
 \begin{tabular}{lll}
@@ -112,7 +145,15 @@ Classicamente: DOF come numero di misure necessarie per fissare univocamente una
 A questo punto si dovrebbe Essere chiaro il punto di partenza:
 \\
 
-\section{Kinematics of Classical fields}
+\subsection{Multisymplectic geometry}
+
+
+\section{Multymplectic approach to classical field theories}
+Tabella -Dictionary
+
+
+\subsection{Configuration Bundle}
+-Kinematics of Classical fields-
 The starting point is the \emph{configuration bundle} 
  	\begin{displaymath}
  		E = \left( \pi_{M,E} : E\rightarrow M \right)
@@ -134,18 +175,48 @@ which is and affine subspace of $\text{L}(T_{\pi(y)}M, T_y E)$ modelled on the f
 	\cong text{L}(T_{\pi(y)}M, T_y E)
 \end{displaymath}
 
-\section{Spunti / Open problems}
+\subsection{Dualization of Jet bundles}
+
+\subsection{Lagrangian Dynamics}
+
+\subsection{Hamiltonian Dynamics}
+
+\subsection{Legendre transformation}
+
+\subsection{examples}
+
+\section{Spunti}
+
+\subsection{Link to the Covariant Approach}
+
+\subsection{Open problems?}
 \begin{itemize}
 	\item We have a momap on ms mfd and a momap on mapping space (as diffeological space) does the two match?
-	\item We have a canonical m-s structure on J.. and a canonical poisson structure con cov phase space (Peierls bracket) does the two match?
+	\item We have a canonical m-s structure on J.. and a canonical poisson structure con cov phase space (Peierls bracket) does the two match? \\
+		Yes! this is actually the result of \cite{forgeromero}. At pages 396-397 they show how to transgress the multisymplectic form to a symplectic form on Sol.\\
+		In theorem 4 pag 403 they show that this form coincide with the one by Peierls constructed a' la Dewitt.
+
 	\item there are other notion of moment map on the multisymplectic setting. For instance how the definition in section 4 of \cite{Gotay1998a} is related to the one in \cite{Ryvkin2018}?
-\end{itemize}
+
+Marco ha fatto un'osservazione interessante: la densità hamiltoniana come definita da Forger-Romero non sembra a priori collegata a nessun elemento delle "L-infty algebra" usata nei suoi lavori. Questo e' in contrasto con il parallelismo che si vorrebbe fare tra algebra di poisson per i sistemi tipo di particella e L-infity algebra per i sistemi tipo campo.
+
+Anche Forger e Romero indicano come che uno dei grandi difetti del formalismo multi-simplettico il fatto che non sia chiaro quale sia la corretta struttura algebrica degli osservabili. Questo problema non è di poco conto visto che la maggior parte degli schemi di quantizzazione partono dal quantizzare l'algebra degli osservabili.
+
+Marco ha parlato con Gotay: dice che la forma ms per i campi è molto particolare (esatta e definita su un particolare fibrato) e che lo studio della geo multisymp a livello molto generale potrebbe alla fine non essere centrale o utile per quanto riguarda la meccanica.	
 	
 
+\end{itemize}
 
-\nocite{*}
-\bibliographystyle{alpha}
-\bibliography{biblio}
+
+%------------------------------------------------------------------------------------------------
+% Bibliography (BibTex)
+% https://arxiv.org/hypertex/bibstyles/
+%------------------------------------------------------------------------------------------------
+			\nocite{*}
+			\bibliographystyle{ieeetr}
+			\bibliography{biblio}
+%------------------------------------------------------------------------------------------------
+
 
 
 
