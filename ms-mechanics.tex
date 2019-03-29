@@ -34,11 +34,7 @@
 
 \usepackage{graphicx}
 \usepackage{hyperref}
-
-%\usepackage{Latex-Theorem/theoremtemplate}
-
-%	\renewcommand{\AffDualJet}{ J^{1 \TwistedAffine}E }
-%	\renewcommand{\LinDualJet}{ \overrightarrow{J^{1 \TwistedLinear}E} }
+\usepackage{tabularx}
 
 \providecommand{\oast}{\ensuremath{\:\!%
  {\raisebox{0.1ex}{$\scriptscriptstyle \bigcirc$} \hspace{-0.5em} \ast}}}
@@ -63,7 +59,7 @@ $$
 \smostar
 J^\smostar
 J^\smoast
-J^\ostar
+%J^\ostar
 $$
 
 
@@ -131,17 +127,17 @@ Roughly, a physical field can be thought as the assignment of a physical quantit
 
 
 Classicamente: DOF come numero di misure necessarie per fissare univocamente una configurazione.
-\begin{table}[]
-\begin{tabular}{lll}
-	System & Configuration space (locally) & protoype 
- 	\\
-	Ordinary system & $\mathbb{R}^n$ with $n\in \mathbb{N} = Hom_{set}(\{1,\ldots n\}, \mathbb{R})$ & A point on a $n$-dimensional mfd.
-	\\
-	1 dimensional field & $\mathbb{R}^\mathbb{R} = C^\infty(\mathbb{R},\mathbb{R})$ & collection of points on a line each one parametrized by ...
-	\\
-	n dimensional field & $(\mathbb{R}^m)^{\mathbb{R}^n} = C^\infty (\mathbb{R}^n, \mathbb{R}^m)$ & ...
-\end{tabular}
-\end{table}
+
+\begin{tabularx}{\textwidth}{c X c c}
+	System & Prototype & DoF & Configuration space (locally)\\
+	Ordinary classical mech system & point-particle on a  $q$-dim manifold &
+	$q$ finite (discrete) & $\mathbb{R}^n = Hom_{set}(\{1,\ldots n\}, \mathbb{R})$ \\
+	1-dim. field & collection of points on a line each one parametrized by a point on the manifold $Q$ & $q$ for each point on the continuous line (infinite and continuous) &
+	...
+%	\\
+%	n dimensional field & $(\mathbb{R}^m)^{\mathbb{R}^n} = C^\infty (\mathbb{R}^n, \mathbb{R}^m)$ & ...
+\end{tabularx}
+
 
 A questo punto si dovrebbe Essere chiaro il punto di partenza:
 \\
