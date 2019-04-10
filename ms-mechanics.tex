@@ -36,6 +36,8 @@
 \usepackage{hyperref}
 \usepackage{tabularx}
 
+\usepackage{Latex-Theorem/theoremtemplate}
+
 \providecommand{\oast}{\ensuremath{\:\!%
  {\raisebox{0.1ex}{$\scriptscriptstyle \bigcirc$} \hspace{-0.5em} \ast}}}
 \providecommand{\ostar}{\ensuremath{\:\!%
@@ -149,28 +151,43 @@ A questo punto si dovrebbe Essere chiaro il punto di partenza:
 Tabella -Dictionary
 
 
-\subsection{Configuration Bundle}
--Kinematics of Classical fields-
-The starting point is the \emph{configuration bundle} 
+\subsection{From the configuration Space to the configuration Bundle}
+Recall that a physical field has to be thought as the assignment of a quantity to every point of a base manifold (a "spacetime" most of the time).
+\\
+It is reasonable that the object needed to encode the kinematics of our field system ougth to be a smooth bundle, that would be the proper language in order to formulate the notion of smooth physical quantity.
+\\
+\begin{definition}[Configuration bundle] 
  	\begin{displaymath}
  		E = \left( \pi_{M,E} : E\rightarrow M \right)
  	\end{displaymath}
-is a smooth bundle encoding the kinematics.
+Smooth fiber bundle $E\sim(x^\mu,q^A)$ with typical fiber $Q\sim(q^A)$ over a smooth, oriented and connected base manifold $M\sim(x^\mu)$.
+\end{definition}
+This definition may seem a bit too bare, but has to be kept in mind that we are describing a structure suitable for many different models.
+\\
+The collection $\Gamma(E)$ of all smooth sections has to be understood as the set of kinematics configurations of the system and the typical fiber $Q$ can be tought as the configuration space of possible values of the field in a fixed point.
 
-\subsection{Jet Bundle}
-The first jet bundle of $E$ generalises the space of generalized velocities.
+\subsection{From the space of generalized velocities to the I Jet bundle}
+The collection of all field configurations together with their partial derivatives up to $r$-th order can be represented by the space of the sections of the $r$-th jet bundle.
+\\
+In what follows we shall only need the first order Jet bundle. This restriction reflect the fact that almost all known examples of field theories are governed by second order PDE and derived from Lagrangian depending only on first order partial derivative.
+Also, it is also reasonable to develop the theory starting from this point directly extending the ordinary geometric mechanics theory.
 
-The fiber over a point $y\in E$ is
+\begin{definition}[I Jet bundle]
+Affine bundle $J^1 E \rightarrow E$, with fibers over a point $y\in E$ given by
 \begin{displaymath}
 	\left( J^1 E\right)_y = \left\lbrace \gamma \in \text{L}(T_{\pi(y)}M, T_y E) \; \vert \: T\pi \circ \gamma = \text{id}_{T_{\pi(x)} M} \right\rbrace
 \end{displaymath}
-(T = Tangent functor L = space of linear maps)
-
-which is and affine subspace of $\text{L}(T_{\pi(y)}M, T_y E)$ modelled on the following (difference) vector space:
+where $T$ is the tangent functor, $L$ is the space of linear maps and $\pi$ is the bundle projection of $E$ over $M$.
+\\
+This fiber is an affine subspace of $\text{L}(T_{\pi(y)}M, T_y E)$ modelled on the following (difference) vector space:
 \begin{displaymath}
 	\vec{\left( J^1 E\right)_y} = \left\lbrace z \in \text{L}(T_{\pi(y)}M, T_y E) \; \vert \: T\pi \circ z = 0 \right\rbrace
-	\cong text{L}(T_{\pi(y)}M, T_y E)
+	\cong \text{L}(T_{\pi(y)}M, T_y E)
+	\cong T_x^\ast M \otimes V_y E
 \end{displaymath}
+\end{definition}
+
+
 
 \subsection{Dualization of Jet bundles}
 
